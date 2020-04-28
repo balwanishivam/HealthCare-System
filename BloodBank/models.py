@@ -18,6 +18,7 @@ class BB_Details(models.Model):
     distance_from_city_center=models.IntegerField(max_length=20)
     city=models.ForeignKey(City,on_delete=models.DO_NOTHING)
     pincode=models.IntegerField(max_length=6)
+    contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
 
 #Blood INventory
 class Blood_Inventory(models.Model):
@@ -41,10 +42,5 @@ class Reiever(models.Model):
     blood_group=models.CharField(max_length=5,null=False)
     date=models.DateField( default=datetime.date.today)
     no_of_units_recieved=models.IntegerField(default=1)
-
-
-
-
-
 
 # Create your models here.
