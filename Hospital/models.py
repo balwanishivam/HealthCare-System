@@ -1,5 +1,7 @@
 from django.db import models
-
+from django.core.validators import MaxValueValidator
+from django.core.validators import MinValueValidator
+import datetime
 # Create your models here.
 
 class Hosp_detail(models.Model):
@@ -23,7 +25,7 @@ class Doctor(models.Model):
     consult_hrs=models.TimeField(auto_now=False, auto_now_add=False)
     working_days= models.ManyToManyField(Days)
     opd_no=models.IntegerField(max_length=3)
-    hospital=models.ForeignKey(Hospital)
+    hospital=models.ForeignKey(Hosp_detail,on_delete=models.CASCADE)
     
 class Patient(models.Model):
     name=models.CharField(max_length=25)
@@ -44,6 +46,6 @@ class Tests(models.Model):
 class Conducted(models.Model):
     diagnosis = models.CharField()
     report=models.CharField()
-    test=models.ForeignKey(Tests)
-    patient=models.ForeignKey(Patient)
+    test=models.ForeignKey(Tests,on_delete=models.CASCADE)
+    patient=models.ForeignKey(Patient,on_delete=models.CASCADE)
     date=models.DateField(auto_now=False, auto_now_add=False)
