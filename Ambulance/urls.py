@@ -7,14 +7,11 @@ app_name="ambulance"
 urlpatterns=[
     # path('/report/',views.reports,name="report"),
     # path('search/',views.search,name="search"),
-    # path('serach/city/<slug:city>/',views.city_search,name="city_search"),
-    # path('search/bloodgroup/<slug:bloodgroup>/',views.bloodgroup_search,name='bloodgroup_search'),
+    # path('serach/pincode/<slug:pincode>/',views.pincode_search,name="pincode_search"),
     # path('admin/',views.admin,name='admin'),
-    # path('admin/add_blood',views.add_blood,name='add_blood'),
-    # path('admin/add_reciever',views.add_reciever,name='add_reciever'),
-    # path('admin/add_donor',views.add_donor,name='add_donor'),
-    # path('admin/edit_blood',views.edit_blood,name='edit_blood'),
-    # path('admin/edit_reciever',views.edit_reciever,name='edit_reciever'),
-    # path('admin/edit_donor',views.edit_donor,name='edit_donor'),
-    
+    # path('admin/add_ambulance',views.add_ambulance,name='add_ambulance'),
+    # path('admin/edit_ambulance',views.edit_ambulance,name='edit_ambulance'),
+    # path('admin/delete_ambulance',views.delete_ambulance,name='delete_ambulance'),
+    # path('admin/provider_detail',views.provider_detail,name='provider_detail'),
+
 ]
