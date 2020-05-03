@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
-app_name="hospitals"
+app_name="Hospital"
 
 urlpatterns=[
     # path('/report/',views.reports,name="report"),

@@ -5,7 +5,7 @@ import datetime
 
 #City Model
 class City(models.Model):
-    std_code=models.IntegerField(max_length=5,primary_key=True)
+    std_code=models.PositiveIntegerField(primary_key=True,validators=[MaxValueValidator(99999),MinValueValidator(10000)])
     name=models.CharField(max_length=100)
     city_center=models.CharField(max_length=100)
 
@@ -15,9 +15,9 @@ class BB_Details(models.Model):
     name=models.CharField(max_length=100)
     street_no=models.CharField(max_length=100)
     area_name=models.CharField(max_length=100)
-    distance_from_city_center=models.IntegerField(max_length=20)
+    distance_from_city_center=models.IntegerField()
     city=models.ForeignKey(City,on_delete=models.DO_NOTHING)
-    pincode=models.IntegerField(max_length=6)
+    pincode=models.PositiveIntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
 
 #Blood INventory
