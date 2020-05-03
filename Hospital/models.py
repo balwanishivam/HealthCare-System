@@ -24,7 +24,7 @@ class Doctor(models.Model):
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     consult_hrs=models.TimeField(auto_now=False, auto_now_add=False)
     working_days= models.ManyToManyField(Days)
-    opd_no=models.IntegerField(max_length=3)
+    opd_no=models.IntegerField()
     hospital=models.ForeignKey(Hosp_detail,on_delete=models.CASCADE)
     
 class Patient(models.Model):
@@ -32,7 +32,7 @@ class Patient(models.Model):
     dob=models.DateField(auto_now=False, auto_now_add=False)
     gender=models.CharField(max_length=10)
     blood_group=models.CharField(max_length=15)
-    med_history=models.CharField()
+    med_history=models.CharField(max_length=1000)
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     adm_date=models.DateField(auto_now=False, auto_now_add=False)
     discharge_date=models.DateField(auto_now=False, auto_now_add=False)
@@ -40,12 +40,12 @@ class Patient(models.Model):
 class Tests(models.Model):
     test_id = models.CharField(max_length=5)
     name=models.CharField(max_length=20)
-    type=models.CharField(max_length=30)
+    test_type=models.CharField(max_length=30)
     cost=models.IntegerField(blank=False)
     
 class Conducted(models.Model):
-    diagnosis = models.CharField()
-    report=models.CharField()
+    diagnosis = models.CharField(max_length=1000)
+    report=models.CharField(max_length=10000)
     test=models.ForeignKey(Tests,on_delete=models.CASCADE)
     patient=models.ForeignKey(Patient,on_delete=models.CASCADE)
     date=models.DateField(auto_now=False, auto_now_add=False)

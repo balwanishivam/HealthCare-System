@@ -10,9 +10,9 @@ class Store_Details(models.Model):
     name=models.CharField(max_length=100)
     street_no=models.CharField(max_length=100)
     area_name=models.CharField(max_length=100)
-    distance_from_city_center=models.IntegerField(max_length=20)
+    distance_from_city_center=models.IntegerField()
     city=models.ForeignKey(City,on_delete=models.DO_NOTHING)
-    pincode=models.IntegerField(max_length=6)
+    pincode=models.PositiveIntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
 
 #Company Name
@@ -22,7 +22,7 @@ class Company(models.Model):
     street_no=models.CharField(max_length=100)
     area_name=models.CharField(max_length=100)
     city=models.ForeignKey(City,on_delete=models.DO_NOTHING)
-    pincode=models.IntegerField(max_length=6)
+    pincode=models.PositiveIntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
 
 #Medicine Inventory

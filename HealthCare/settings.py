@@ -31,6 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Accounts.apps.AccountsConfig',
+    'Ambulance.apps.AmbulanceConfig',
+    'BloodBank.apps.BloodbankConfig',
+    'Medical_Store.apps.MedicalStoreConfig',
+    'Hospital.apps.HospitalConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
