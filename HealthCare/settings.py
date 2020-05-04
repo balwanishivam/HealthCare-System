@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'Accounts.apps.AccountsConfig',
+    'myuser',
     'Ambulance.apps.AmbulanceConfig',
     'BloodBank.apps.BloodbankConfig',
     'Medical_Store.apps.MedicalStoreConfig',
@@ -72,6 +72,7 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL ='myuser.Myuser'
 WSGI_APPLICATION = 'HealthCare.wsgi.application'
 
 
