@@ -11,7 +11,8 @@ class Hosp_detail(models.Model):
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999),MinValueValidator(1000000)])
     email=models.EmailField(max_length=50)
     emergency_contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999), MinValueValidator(1000000)])
-    
+    user=models.ForeignKey(Myuser)
+
 
 class Days(models.Model):
     day = models.CharField(max_length=8)
@@ -26,6 +27,7 @@ class Doctor(models.Model):
     working_days= models.ManyToManyField(Days)
     opd_no=models.IntegerField()
     hospital=models.ForeignKey(Hosp_detail,on_delete=models.CASCADE)
+    user=models.ForeignKey(Myuser)
     
 class Patient(models.Model):
     name=models.CharField(max_length=25)
