@@ -1,5 +1,6 @@
 from django.db import models
 from BloodBank.models import City
+from myuser.models import Myuser
 from django.core.validators import MaxValueValidator
 from django.core.validators import MinValueValidator
 import datetime
@@ -17,7 +18,8 @@ class Service_Provider(models.Model):
     pincode=models.PositiveIntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])
     no_of_ambulances=models.IntegerField(default=1)
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
-    user=models.ForeignKey(Myuser)
+
+    user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
 
 #Ambulance Details
 class Ambulance_Details(models.Model):
@@ -30,7 +32,7 @@ class Ambulance_Details(models.Model):
     pincode=models.PositiveIntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     amb_type=models.CharField(max_length=3,choices=AMB_CHOICES)
-    user=models.ForeignKey(Myuser)
+    user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
 
 
 

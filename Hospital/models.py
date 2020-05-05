@@ -1,4 +1,5 @@
 from django.db import models
+from myuser.models import Myuser
 from django.core.validators import MaxValueValidator
 from django.core.validators import MinValueValidator
 import datetime
@@ -11,7 +12,8 @@ class Hosp_detail(models.Model):
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999),MinValueValidator(1000000)])
     email=models.EmailField(max_length=50)
     emergency_contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999), MinValueValidator(1000000)])
-    user=models.ForeignKey(Myuser)
+    user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
+
 
 
 class Days(models.Model):
@@ -27,7 +29,8 @@ class Doctor(models.Model):
     working_days= models.ManyToManyField(Days)
     opd_no=models.IntegerField()
     hospital=models.ForeignKey(Hosp_detail,on_delete=models.CASCADE)
-    user=models.ForeignKey(Myuser)
+    user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
+
     
 class Patient(models.Model):
     name=models.CharField(max_length=25)
@@ -38,12 +41,14 @@ class Patient(models.Model):
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     adm_date=models.DateField(auto_now=False, auto_now_add=False)
     discharge_date=models.DateField(auto_now=False, auto_now_add=False)
+    user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
     
 class Tests(models.Model):
     test_id = models.CharField(max_length=5)
     name=models.CharField(max_length=20)
     test_type=models.CharField(max_length=30)
     cost=models.IntegerField(blank=False)
+    user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
     
 class Conducted(models.Model):
     diagnosis = models.CharField(max_length=1000)
