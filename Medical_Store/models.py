@@ -14,6 +14,7 @@ class Store_Details(models.Model):
     city=models.ForeignKey(City,on_delete=models.DO_NOTHING)
     pincode=models.PositiveIntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
+    user=models.ForeignKey(Myuser)
 
 #Company Name
 class Company(models.Model):
@@ -33,7 +34,8 @@ class Medicine_Inventory(models.Model):
     med_type=models.CharField(max_length=120)
     mdf=models.DateField()
     expiry=models.DateField(),
-    
+    user=models.ForeignKey(Myuser)
+
 
 
 # Create your models here.
