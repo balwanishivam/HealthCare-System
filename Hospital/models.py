@@ -15,6 +15,7 @@ class Hosp_detail(models.Model):
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
 
 
+
 class Days(models.Model):
     day = models.CharField(max_length=8)
 
@@ -29,6 +30,7 @@ class Doctor(models.Model):
     opd_no=models.IntegerField()
     hospital=models.ForeignKey(Hosp_detail,on_delete=models.CASCADE)
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
+
     
 class Patient(models.Model):
     name=models.CharField(max_length=25)

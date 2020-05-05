@@ -14,7 +14,6 @@ class Store_Details(models.Model):
     distance_from_city_center=models.IntegerField()
     city=models.ForeignKey(City,on_delete=models.DO_NOTHING)
     pincode=models.PositiveIntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])
-    contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
 
 #Company Name
@@ -34,7 +33,7 @@ class Medicine_Inventory(models.Model):
     company_name=models.ForeignKey(Company,on_delete=models.CASCADE)
     med_type=models.CharField(max_length=120)
     mdf=models.DateField()
-    expiry=models.DateField(),
+    expiry=models.DateField()
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
 
 

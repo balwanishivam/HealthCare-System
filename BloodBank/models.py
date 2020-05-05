@@ -11,6 +11,7 @@ class City(models.Model):
     city_center=models.CharField(max_length=100)
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
 
+
 #BB-Details
 class BB_Details(models.Model):
     code=models.CharField(max_length=4,primary_key=True)
@@ -25,6 +26,8 @@ class BB_Details(models.Model):
     
     def __str__(self):
         return self.name
+
+
 
 #Blood INventory
 class Blood_Inventory(models.Model):
