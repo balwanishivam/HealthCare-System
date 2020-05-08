@@ -5,6 +5,7 @@ class ServiceProvider(forms.ModelForm):
     class Meta:
         model = Service_Provider
         fields=['name', 'city', 'street_no', 'area_name', 'pincode', 'no_of_ambulances', 'contact', 'user']
+        exclude=('user')
         
 class AmbulanceDetails(forms.ModelForm):
     class Meta:
