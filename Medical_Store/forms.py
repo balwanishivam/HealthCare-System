@@ -1,3 +1,4 @@
+
 from .models import *
 from django import forms
 
@@ -16,3 +17,4 @@ class MedicineInventory(forms.ModelForm):
     class Meta:
         fields=['store_name','name','company','med_type','mdf','expiry','user']
         exclude=('user',)
+

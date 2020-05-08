@@ -29,6 +29,7 @@ class Doctor(models.Model):
     working_days= models.ManyToManyField(Days)
     opd_no=models.IntegerField()
     hospital=models.ForeignKey(Hosp_detail,on_delete=models.CASCADE)
+    
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
 
     
@@ -41,6 +42,7 @@ class Patient(models.Model):
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     adm_date=models.DateField(auto_now=False, auto_now_add=False)
     discharge_date=models.DateField(auto_now=False, auto_now_add=False)
+    
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
     
 class Tests(models.Model):

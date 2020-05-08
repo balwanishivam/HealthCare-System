@@ -1,3 +1,4 @@
+
 from django import forms
 from .models import City,Donor,Reciever,BB_Details
 
@@ -24,5 +25,4 @@ class RecieverDetails(forms.ModelForm):
         model=Reciever
         fields=['name','contact','email','blood_group','date','no_of_units','user']
         exclude=('user',)
-
 
