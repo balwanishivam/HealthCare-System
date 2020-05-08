@@ -10,5 +10,9 @@ class StoreDeatils(forms.ModelForm):
 class CompanyDetails(forms.ModelForm):
     class Meta:
         model=Company
-        fields=['code','name']
+        fields=['code','name','street_no','area_name','city','pincode','contact']
 
+class MedicineInventory(forms.ModelForm):
+    class Meta:
+        fields=['store_name','name','company','med_type','mdf','expiry','user']
+        exclude=('user',)
