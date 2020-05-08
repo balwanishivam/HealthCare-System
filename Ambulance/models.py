@@ -32,6 +32,7 @@ class Ambulance_Details(models.Model):
     pincode=models.PositiveIntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     amb_type=models.CharField(max_length=3,choices=AMB_CHOICES)
+    
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
 
 
