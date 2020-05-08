@@ -1,15 +1,20 @@
-from django.contrib.auth.models import Medical_Store
+
+from .models import *
 from django import forms
-from myuser.models import Myuser
 
-class RegistrationForm(forms.ModelForm):
-    password=forms.CharField(widget=forms.PasswordInput)
+class StoreDeatils(forms.ModelForm):
     class Meta:
-        model = Myuser
-        fields=['email','password','organisation_name','user_type']
+        model=Store_Details
+        fields=['code','name','street_no','area_name','distance_from_city_center','city','pincode','user']
+        exclude=('user',)
 
-class LoginForm(forms.ModelForm):
-    password=forms.CharField(widget=forms.PasswordInput)
+class CompanyDetails(forms.ModelForm):
     class Meta:
-        model=Myuser
-        fields=['email','password','user_type']
+        model=Company
+        fields=['code','name','street_no','area_name','city','pincode','contact']
+
+class MedicineInventory(forms.ModelForm):
+    class Meta:
+        fields=['store_name','name','company','med_type','mdf','expiry','user']
+        exclude=('user',)
+
