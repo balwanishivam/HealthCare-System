@@ -5,12 +5,13 @@ class HospDetail(forms.ModelForm):
     class Meta:
         model=Hosp_detail
         fields = ['code', 'name', 'address', 'contact', 'email', 'emergency_contact', 'user']
-        
+        exclude=('user',)
+
 class DoctorDetails(forms.ModelForm):
     class Meta:
         model=Doctor
         fields = ['name', 'speciality', 'qualification', 'contact', 'consult_hrs', 'working_days', 'opd_no', 'hospital', 'user']
-        
+        exclude=('user',)
         
 class PatientDetails(forms.ModelForm):
     class Meta:
