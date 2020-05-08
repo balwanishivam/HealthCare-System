@@ -11,3 +11,4 @@ class CompanyDetails(forms.ModelForm):
     class Meta:
         model=Company
         fields=['code','name']
+

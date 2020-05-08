@@ -9,6 +9,8 @@ class City(models.Model):
     std_code=models.PositiveIntegerField(primary_key=True,validators=[MaxValueValidator(99999),MinValueValidator(10000)])
     name=models.CharField(max_length=100)
     city_center=models.CharField(max_length=100)
+    models.ForeignKey(Myuser,on_delete=models.CASCADE)
+
 
 
 #BB-Details

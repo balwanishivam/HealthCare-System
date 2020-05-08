@@ -24,3 +24,5 @@ class RecieverDetails(forms.ModelForm):
         model=Reciever
         fields=['name','contact','email','blood_group','date','no_of_units','user']
         exclude=('user',)
+
+
