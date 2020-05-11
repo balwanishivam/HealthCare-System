@@ -22,6 +22,7 @@ class UserFormView(View):
             user=form.save(commit=False)
             email=form.cleaned_data['email']
             password=form.cleaned_data['password']
+            user_type=form.cleaned_data['user_type']
             user.set_password(password)
             user.save()
 
@@ -30,8 +31,16 @@ class UserFormView(View):
             if user is not None:
                 if user.is_active:
                     login(request,user)
-                    return redirect('myuser:login')
-        
+                    if user_type=="AMB":
+                        return redirect('Ambulance:register')
+                    elif user_type=="HSP":
+                        return redirect('Hospital:register')
+                    elif user_type=="MST":
+                        return redirect('Medical_Store:register')
+                    elif user_type=="BLB":
+                        return redirect('bloodbank:register')
+                    else:
+                        return render(request,self.template_name,{'form':form})        
         return render(request,self.template_name,{'form':form})
 
 class LoginView(View):
@@ -86,4 +95,8 @@ class LogoutView(View):
         form=self.form_class(None)
         logout(request)
         return redirect(reverse('myuser:login_user'))
+
+class Delete(DeleteView):
+    model=Myuser
+    success_url=reverse_lazy('myuser:login')
 

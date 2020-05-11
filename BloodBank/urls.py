@@ -5,6 +5,7 @@ from django.conf import settings
 app_name="bloodbank"
 
 urlpatterns=[
+    path('register/',views.UserCreate.as_view(),name="register"),
     # path('/report/',views.reports,name="report"),
     # path('search/',views.search,name="search"),
     # path('serach/city/<slug:city>/',views.city_search,name="city_search"),
