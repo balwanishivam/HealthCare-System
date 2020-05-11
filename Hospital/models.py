@@ -41,8 +41,7 @@ class Patient(models.Model):
     med_history=models.CharField(max_length=1000)
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     adm_date=models.DateField(auto_now=False, auto_now_add=False)
-    discharge_date=models.DateField(auto_now=False, auto_now_add=False)
-    
+    discharge_date=models.DateField(auto_now=False, auto_now_add=False)  
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
     
 class Tests(models.Model):
@@ -54,7 +53,8 @@ class Tests(models.Model):
     
 class Conducted(models.Model):
     diagnosis = models.CharField(max_length=1000)
-    report=models.CharField(max_length=10000)
+    report=models.TextField()
     test=models.ForeignKey(Tests,on_delete=models.CASCADE)
     patient=models.ForeignKey(Patient,on_delete=models.CASCADE)
     date=models.DateField(auto_now=False, auto_now_add=False)
+    user=models.ForeignKey(Myuser,on_delete=models.CASCADE)

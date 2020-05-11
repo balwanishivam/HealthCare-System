@@ -2,7 +2,7 @@
 from .models import *
 from django import forms
 
-class StoreDeatils(forms.ModelForm):
+class StoreDetails(forms.ModelForm):
     class Meta:
         model=Store_Details
         fields=['code','name','street_no','area_name','distance_from_city_center','city','pincode','user']

@@ -17,12 +17,12 @@ class BBDetails(forms.ModelForm):
 class DonorDetails(forms.ModelForm):
     class Meta:
         model=Donor
-        fields=['name','contact','email','blood_group','date','no_of_units','user']
+        fields=['name','contact','email','blood_group','date','no_of_units_donated','user']
         exclude=('user',)
 
 class RecieverDetails(forms.ModelForm):
     class Meta:
         model=Reciever
-        fields=['name','contact','email','blood_group','date','no_of_units','user']
+        fields=['name','contact','email','blood_group','date','no_of_units_recieved','user']
         exclude=('user',)
 

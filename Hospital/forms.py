@@ -16,17 +16,17 @@ class DoctorDetails(forms.ModelForm):
 class PatientDetails(forms.ModelForm):
     class Meta:
         model=Patient
-        fields = ['name', 'dob', 'gender', 'bloog_group', 'med_history', 'contact', 'adm_date', 'discharge_date', 'user']
+        fields = ['name', 'dob', 'gender', 'blood_group', 'med_history', 'contact', 'adm_date', 'discharge_date', 'user']
         exclude=('user',)
         
 class TestDetails(forms.ModelForm):
     class Meta:
         model=Tests
-        fields = ['test_id', 'report', 'test', 'patient', 'date']
+        fields = ['test_id', 'name', 'test_type', 'cost', 'user']
         exclude = ('user',)
 
 class TestConducted(forms.ModelForm):
     class Meta:
         model=Conducted
-        fields = ['diagnosis', 'report', 'test', 'patient', 'date']
+        fields = ['diagnosis', 'report', 'test', 'patient', 'date','user']
         exclude = ('user',)
