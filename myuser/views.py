@@ -22,11 +22,11 @@ class UserFormView(View):
             user=form.save(commit=False)
             email=form.cleaned_data['email']
             password=form.cleaned_data['password']
-            user_type=form.cleaned_data['user_type']
+            user_type=form.cleaned_data['password2']
             user.set_password(password)
             user.save()
-
-            user=authenticate(email=email,password=password)
+            if(password==password2):
+                user=authenticate(email=email,password=password)
 
             if user is not None:
                 if user.is_active:
