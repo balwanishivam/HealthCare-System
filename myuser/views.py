@@ -22,11 +22,11 @@ class UserFormView(View):
             user=form.save(commit=False)
             email=form.cleaned_data['email']
             password=form.cleaned_data['password']
-            user_type=form.cleaned_data['user_type']
+            user_type=form.cleaned_data['password2']
             user.set_password(password)
             user.save()
-
-            user=authenticate(email=email,password=password)
+            if(password==password2):
+                user=authenticate(email=email,password=password)
 
             if user is not None:
                 if user.is_active:
@@ -57,24 +57,23 @@ class LoginView(View):
         form=self.form_class(request.POST)
         email=request.POST['email']
         password=request.POST['password']
-        user_type_input=request.POST['user_type']
         user=authenticate(email=email,password=password)
         user_details=Myuser.objects.get(pk=request.user.id)
         user_type=user_details.user_type
-        print(user_type)
+        
         if user is not None:
             if user.is_active:
                 login(request,user)
-                if user_type=="HSP" and user_type==user_type_input:
+                if user_type=="HSP" :
                     return HttpResponse("<html>Welcome to Hospital</html>")
                     #return redirect('Attendance_manager:index_student')
-                elif user_type=="AMB" and user_type==user_type_input:
+                elif user_type=="AMB" :
                     return HttpResponse("<html>Welcome to Ambulance</html>")
                     #return redirect('Attendance_manager:index_student')
-                elif user_type=="BLB" and user_type==user_type_input:
+                elif user_type=="BLB" :
                     return HttpResponse("<html>Welcome to BLoodBank</html>")
                     #return redirect('Attendance_manager:index_student')
-                elif user_type=="MST" and user_type==user_type_input:
+                elif user_type=="MST":
                     return HttpResponse("<html>Welcome to Medical Store</html>")
                     #return redirect('Attendance_manager:index_student')
                 else :
