@@ -22,16 +22,25 @@ class UserFormView(View):
             user=form.save(commit=False)
             email=form.cleaned_data['email']
             password=form.cleaned_data['password']
+            user_type=form.cleaned_data['password2']
             user.set_password(password)
             user.save()
-
-            user=authenticate(email=email,password=password)
+            if(password==password2):
+                user=authenticate(email=email,password=password)
 
             if user is not None:
                 if user.is_active:
                     login(request,user)
-                    return redirect('myuser:login')
-        
+                    if user_type=="AMB":
+                        return redirect('Ambulance:register')
+                    elif user_type=="HSP":
+                        return redirect('Hospital:register')
+                    elif user_type=="MST":
+                        return redirect('Medical_Store:register')
+                    elif user_type=="BLB":
+                        return redirect('bloodbank:register')
+                    else:
+                        return render(request,self.template_name,{'form':form})        
         return render(request,self.template_name,{'form':form})
 
 class LoginView(View):
@@ -48,24 +57,23 @@ class LoginView(View):
         form=self.form_class(request.POST)
         email=request.POST['email']
         password=request.POST['password']
-        user_type_input=request.POST['user_type']
         user=authenticate(email=email,password=password)
         user_details=Myuser.objects.get(pk=request.user.id)
         user_type=user_details.user_type
-        print(user_type)
+        
         if user is not None:
             if user.is_active:
                 login(request,user)
-                if user_type=="HSP" and user_type==user_type_input:
+                if user_type=="HSP" :
                     return HttpResponse("<html>Welcome to Hospital</html>")
                     #return redirect('Attendance_manager:index_student')
-                elif user_type=="AMB" and user_type==user_type_input:
+                elif user_type=="AMB" :
                     return HttpResponse("<html>Welcome to Ambulance</html>")
                     #return redirect('Attendance_manager:index_student')
-                elif user_type=="BLB" and user_type==user_type_input:
+                elif user_type=="BLB" :
                     return HttpResponse("<html>Welcome to BLoodBank</html>")
                     #return redirect('Attendance_manager:index_student')
-                elif user_type=="MST" and user_type==user_type_input:
+                elif user_type=="MST":
                     return HttpResponse("<html>Welcome to Medical Store</html>")
                     #return redirect('Attendance_manager:index_student')
                 else :
@@ -86,4 +94,8 @@ class LogoutView(View):
         form=self.form_class(None)
         logout(request)
         return redirect(reverse('myuser:login_user'))
+
+class Delete(DeleteView):
+    model=Myuser
+    success_url=reverse_lazy('myuser:login')
 
