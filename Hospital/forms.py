@@ -4,7 +4,7 @@ from django import forms
 class HospDetail(forms.ModelForm):
     class Meta:
         model=Hosp_detail
-        fields = ['name', 'address', 'contact', 'email', 'emergency_contact', 'user']
+        fields = ['name', 'address','city','pincode','contact', 'email', 'emergency_contact', 'user']
         exclude=('user',)
 
 class DoctorDetails(forms.ModelForm):
