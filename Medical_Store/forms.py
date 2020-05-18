@@ -1,20 +1,20 @@
-
 from .models import *
 from django import forms
 
 class StoreDetails(forms.ModelForm):
     class Meta:
         model=Store_Details
-        fields=['code','name','street_no','area_name','distance_from_city_center','city','pincode','user']
+        fields=['name','address','city','pincode','user']
         exclude=('user',)
 
 class CompanyDetails(forms.ModelForm):
     class Meta:
         model=Company
-        fields=['code','name','street_no','area_name','city','pincode','contact']
+        fields=['code','name','address','city','pincode','contact','user']
+        exclude=('user',)
 
 class MedicineInventory(forms.ModelForm):
     class Meta:
-        fields=['store_name','name','company','med_type','mdf','expiry','user']
+        fields=['name','company','mdf','expiry','mrp','user']
         exclude=('user',)
 

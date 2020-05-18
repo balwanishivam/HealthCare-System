@@ -1,19 +1,17 @@
 from django.db import models
-from myuser.models import Myuser
+from myuser.models import Myuser,City
 from django.core.validators import MaxValueValidator
 from django.core.validators import MinValueValidator
 import datetime
 # Create your models here.
 
 class Hosp_detail(models.Model):
-    code=models.CharField(max_length=4,primary_key=True)
     name=models.CharField(max_length=25)
-    address=models.CharField(max_length=100)
-    contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999),MinValueValidator(1000000)])
+    address=models.CharField(max_length=500)
+    contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     email=models.EmailField(max_length=50)
-    emergency_contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999), MinValueValidator(1000000)])
+    emergency_contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999), MinValueValidator(1000000000)])
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
-
 
 
 class Days(models.Model):
@@ -22,19 +20,16 @@ class Days(models.Model):
 
 class Doctor(models.Model):
     name=models.CharField(max_length=25)
-    speciality=models.CharField(max_length=20)
+    speciality=models.CharField(max_length=200)
     qualification=models.CharField(max_length=10)
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     consult_hrs=models.TimeField(auto_now=False, auto_now_add=False)
     working_days= models.ManyToManyField(Days)
-    opd_no=models.IntegerField()
-    hospital=models.ForeignKey(Hosp_detail,on_delete=models.CASCADE)
-    
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
 
     
 class Patient(models.Model):
-    name=models.CharField(max_length=25)
+    name=models.CharField(max_length=200)
     dob=models.DateField(auto_now=False, auto_now_add=False)
     gender=models.CharField(max_length=10)
     blood_group=models.CharField(max_length=15)

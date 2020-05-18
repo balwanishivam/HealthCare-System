@@ -4,13 +4,13 @@ from django import forms
 class HospDetail(forms.ModelForm):
     class Meta:
         model=Hosp_detail
-        fields = ['code', 'name', 'address', 'contact', 'email', 'emergency_contact', 'user']
+        fields = ['name', 'address', 'contact', 'email', 'emergency_contact', 'user']
         exclude=('user',)
 
 class DoctorDetails(forms.ModelForm):
     class Meta:
         model=Doctor
-        fields = ['name', 'speciality', 'qualification', 'contact', 'consult_hrs', 'working_days', 'opd_no', 'hospital', 'user']
+        fields = ['name', 'speciality', 'qualification', 'contact', 'consult_hrs', 'working_days', 'user']
         exclude=('user',)
         
 class PatientDetails(forms.ModelForm):

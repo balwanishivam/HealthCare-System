@@ -1,28 +1,25 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
 from django.core.validators import MinValueValidator
-from myuser.models import Myuser
+from myuser.models import Myuser,City
 import datetime
 
-#City Model
-class City(models.Model):
-    std_code=models.PositiveIntegerField(primary_key=True,validators=[MaxValueValidator(99999),MinValueValidator(10000)])
-    name=models.CharField(max_length=100)
-    city_center=models.CharField(max_length=100)
-    models.ForeignKey(Myuser,on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-
-
+BLOOD_GROUP=[
+    ('A+','A+'),
+    ('B+','B+'),
+    ('O+','O+'),
+    ('AB+','AB+'),
+    ('A-','A-'),
+    ('B-','B-'),
+    ('O-','O-'),
+    ('AB-','AB-'),
+]
 
 #BB-Details
 class BB_Details(models.Model):
-    code=models.CharField(max_length=4,primary_key=True)
+        
     name=models.CharField(max_length=100)
-    street_no=models.CharField(max_length=100)
-    area_name=models.CharField(max_length=100)
-    distance_from_city_center=models.IntegerField()
+    address=models.CharField(max_length=500)
     city=models.ForeignKey(City,on_delete=models.DO_NOTHING)
     pincode=models.PositiveIntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
@@ -31,21 +28,19 @@ class BB_Details(models.Model):
     def __str__(self):
         return self.name
 
-
-
 #Blood INventory
 class Blood_Inventory(models.Model):
-    blood_group=models.CharField(max_length=5,primary_key=True)
+    blood_group=models.CharField(max_length=3,primary_key=True,choices=BLOOD_GROUP)
     no_of_units=models.IntegerField(default=0)
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
-
 
 #Donor Details
 class Donor(models.Model):
     name=models.CharField(max_length=100)
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     email=models.EmailField(max_length=256)
-    blood_group=models.CharField(max_length=5,null=False)
+    area=models.CharField(max_length=200)
+    blood_group=models.CharField(max_length=3,choices=BLOOD_GROUP)
     date=models.DateField( default=datetime.date.today)
     no_of_units_donated=models.IntegerField(default=1)
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
@@ -56,8 +51,8 @@ class Reciever(models.Model):
     name=models.CharField(max_length=100)
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     email=models.EmailField(max_length=256)
-    blood_group=models.CharField(max_length=5,null=False)
-    date=models.DateField( default=datetime.date.today)
+    blood_group=models.CharField(max_length=3,choices=BLOOD_GROUP)
+    date=models.DateField(default=datetime.date.today)
     no_of_units_recieved=models.IntegerField(default=1)
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
 
