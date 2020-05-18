@@ -4,7 +4,7 @@ from django import forms
 class StoreDetails(forms.ModelForm):
     class Meta:
         model=Store_Details
-        fields=['name','address','city','pincode','user']
+        fields=['name','address','city','pincode','contact','user']
         exclude=('user',)
 
 class CompanyDetails(forms.ModelForm):
