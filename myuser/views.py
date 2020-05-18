@@ -22,25 +22,27 @@ class UserFormView(View):
             user=form.save(commit=False)
             email=form.cleaned_data['email']
             password=form.cleaned_data['password']
+            user_type=form.cleaned_data['user_type']
             password2=form.cleaned_data['password2']
-            user.set_password(password)
-            user.save()
-            user_type=Myuser.get.objects(email=email)
-            if(password==password2):
+            if password==password2:
+                user.set_password(password)
+                user.save()
                 user=authenticate(email=email,password=password)
-            if user is not None:
-                if user.is_active:
-                    login(request,user)
-                    if user_type=="AMB":
-                        return redirect('Ambulance:register')
-                    elif user_type=="HSP":
-                        return redirect('Hospital:register')
-                    elif user_type=="MST":
-                        return redirect('Medical_Store:register')
-                    elif user_type=="BLB":
-                        return redirect('bloodbank:register')
-                    else:
-                        return render(request,self.template_name,{'form':form})        
+                if user is not None:
+                    if user.is_active:
+                        login(request,user)
+                        if user_type=="AMB":
+                            return redirect('Ambulance:register')
+                        elif user_type=="HSP":
+                            return redirect('Hospital:register')
+                        elif user_type=="MST":
+                            return redirect('Medical_Store:register')
+                        elif user_type=="BLB":
+                            return redirect('bloodbank:register')
+                        else:
+                            return render(request,self.template_name,{'form':form})  
+            
+        form=self.form_class(None)      
         return render(request,self.template_name,{'form':form})
 
 class LoginView(View):

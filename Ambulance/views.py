@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class UserCreate(LoginRequiredMixin,View):
     form_class=ServiceProvider
-    template_name='Ambulance/service_provider_form.html'
+    template_name='Ambulance/register.html'
 
     def get(self,request):
         form=self.form_class(None)
@@ -20,7 +20,7 @@ class UserCreate(LoginRequiredMixin,View):
         form=self.form_class(request.POST)
         if form.is_valid():
             provider=form.save(commit=False)
-            form.instance.user = self.request.user
+            provider.user = self.request.user
             provider.save()
             return HttpResponse("<html>Welcome to Ambulance</html>")
         
