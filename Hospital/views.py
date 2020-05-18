@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class UserCreate(LoginRequiredMixin,View):
     form_class=HospDetail
-    template_name='Hospital/hospdetails_form.html'
+    template_name='Hospital/register.html'
 
     def get(self,request):
         form=self.form_class(None)
