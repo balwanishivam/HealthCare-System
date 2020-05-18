@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
-
+from django.core.validators import MaxValueValidator
+from django.core.validators import MinValueValidator
 USER_CHOICE=[
     ('AMB','Ambulance'),
     ('BLB','Blood-Bank'),
@@ -57,5 +58,11 @@ class Myuser(AbstractBaseUser):
     def has_module_perms(self,app_label):
         return True
 
+class City(models.Model):
+    std_code=models.PositiveIntegerField(primary_key=True,validators=[MaxValueValidator(99999),MinValueValidator(10000)])
+    name=models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 # Create your models here.
