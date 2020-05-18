@@ -3,6 +3,7 @@ from django.core.validators import MaxValueValidator
 from django.core.validators import MinValueValidator
 from myuser.models import Myuser,City
 import datetime
+
 BLOOD_GROUP=[
     ('A+','A+'),
     ('B+','B+'),
@@ -13,7 +14,6 @@ BLOOD_GROUP=[
     ('O-','O-'),
     ('AB-','AB-'),
 ]
-
 
 #BB-Details
 class BB_Details(models.Model):
