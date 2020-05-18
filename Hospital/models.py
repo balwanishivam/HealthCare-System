@@ -8,6 +8,8 @@ import datetime
 class Hosp_detail(models.Model):
     name=models.CharField(max_length=25)
     address=models.CharField(max_length=500)
+    city=models.ForeignKey(City,on_delete=models.DO_NOTHING)
+    pincode=models.PositiveIntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     email=models.EmailField(max_length=50)
     emergency_contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999), MinValueValidator(1000000000)])
