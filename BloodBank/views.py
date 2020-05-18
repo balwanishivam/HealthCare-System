@@ -11,7 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class UserCreate(LoginRequiredMixin,View):
     form_class=BBDetails
-    template_name='BloodBank/service_provider_form.html'
+    template_name='BloodBank/register.html'
 
     def get(self,request):
         form=self.form_class(None)
