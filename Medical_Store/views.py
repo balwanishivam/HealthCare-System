@@ -28,7 +28,7 @@ class UserCreate(LoginRequiredMixin,View):
 
 
 class AddCompany(LoginRequiredMixin,View):
-    form_class=Company
+    form_class=CompanyDetails
     template_name='Medical_Store/add_company.html'
 
     def get(self,request):
