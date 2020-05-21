@@ -26,5 +26,22 @@ class UserCreate(LoginRequiredMixin,View):
         
         return render(request,self.template_name,{'form':form})
 
+class AddAmbulance(LoginRequiredMixin,View):
+    form_class=AmbulanceDetails
+    template_name='Ambulance/add_ambulance.html'
 
+    def get(self,request):
+        form=self.form_class(None)
+        return render(request,self.template_name,{'form':form})
+
+    def post(self,request):
+        form=self.form_class(request.POST)
+        if form.is_valid():
+            provider=form.save(commit=False)
+            provider.user = self.request.user
+            provider.save()
+            #redirect to home page
+            return HttpResponse("<html>Added Succesfully</html>")
+        
+        return render(request,self.template_name,{'form':form})
 # Create your views here.
