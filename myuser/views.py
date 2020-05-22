@@ -67,7 +67,7 @@ class LoginView(View):
             if user.is_active:
                 login(request,user)
                 if user_type=="HSP" :
-                    return HttpResponse("<html>Welcome to Hospital</html>")
+                    return redirect('Hospital:index')
                     #return redirect('Attendance_manager:index_student')
                 elif user_type=="AMB" :
                     return HttpResponse("<html>Welcome to Ambulance</html>")

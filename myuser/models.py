@@ -58,7 +58,7 @@ class Myuser(AbstractBaseUser):
         return True
 
 class City(models.Model):
-    std_code=models.PositiveIntegerField(primary_key=True,validators=[MaxValueValidator(9999),MinValueValidator(1000)])
+    std_code=models.PositiveIntegerField(validators=[MaxValueValidator(9999),MinValueValidator(1000)])
     name=models.CharField(max_length=100)
 
     def __str__(self):
