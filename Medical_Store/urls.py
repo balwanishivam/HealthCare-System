@@ -5,6 +5,8 @@ app_name="Medical_Store"
 
 urlpatterns=[
     path('register/',views.UserCreate.as_view(),name="register"),
+    path('add_company/',views.AddCompany.as_view(),name="add_company"),
+    path('add_medicine/',views.AddMedicine.as_view(),name="add_medicine"),
     # path('/report/',views.reports,name="report"),
     # path('search/',views.search,name="search"),
     # path('serach/city/<slug:city>/',views.city_search,name="city_search"),
