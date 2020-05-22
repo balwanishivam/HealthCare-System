@@ -36,7 +36,6 @@ class Myusermanager(BaseUserManager):
 class Myuser(AbstractBaseUser):
     email=models.EmailField(max_length=256,verbose_name="email",unique=True)
     user_type=models.CharField(max_length=3,choices=USER_CHOICE)
-    organisation_name=models.CharField(max_length=200)
     date_joined=models.DateTimeField(verbose_name='date-joined',auto_now_add=True)
     last_login=models.DateTimeField(verbose_name='last-login',auto_now=True)
     is_admin=models.BooleanField(default=False)
@@ -59,7 +58,7 @@ class Myuser(AbstractBaseUser):
         return True
 
 class City(models.Model):
-    std_code=models.PositiveIntegerField(primary_key=True,validators=[MaxValueValidator(99999),MinValueValidator(10000)])
+    std_code=models.PositiveIntegerField(validators=[MaxValueValidator(9999),MinValueValidator(1000)])
     name=models.CharField(max_length=100)
 
     def __str__(self):

@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class UserCreate(LoginRequiredMixin,View):
     form_class=StoreDetails
-    template_name='Medical_Store/service_provider_form.html'
+    template_name='Medical_Store/register.html'
 
     def get(self,request):
         form=self.form_class(None)
@@ -27,4 +27,40 @@ class UserCreate(LoginRequiredMixin,View):
         return render(request,self.template_name,{'form':form})
 
 
+class AddCompany(LoginRequiredMixin,View):
+    form_class=CompanyDetails
+    template_name='Medical_Store/add_company.html'
+
+    def get(self,request):
+        form=self.form_class(None)
+        return render(request,self.template_name,{'form':form})
+
+    def post(self,request):
+        form=self.form_class(request.POST)
+        if form.is_valid():
+            provider=form.save(commit=False)
+            form.instance.user = self.request.user
+            provider.save()
+            return HttpResponse("<html>Company Added successfully</html>")
+        
+        return render(request,self.template_name,{'form':form})
+
+
+class AddMedicine(LoginRequiredMixin,View):
+    form_class=MedicineInventory
+    template_name='Medical_Store/add_medicine.html'
+
+    def get(self,request):
+        form=self.form_class(None)
+        return render(request,self.template_name,{'form':form})
+
+    def post(self,request):
+        form=self.form_class(request.POST)
+        if form.is_valid():
+            provider=form.save(commit=False)
+            form.instance.user = self.request.user
+            provider.save()
+            return HttpResponse("<html>Medicine added succesflly</html>")
+        
+        return render(request,self.template_name,{'form':form})
 # Create your views here.

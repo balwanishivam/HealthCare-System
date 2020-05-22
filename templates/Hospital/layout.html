@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'Hospital/css/layout.css' %}"/>
+  
+    <title>{% block title%} {% endblock %}</title>
+</head>
+<body>
+	<div id="container">
+    <div id="header">
+        <header>
+        <a href="{% url 'Hospital:index' %}">
+            <img src="{% static 'myuser/css/logo.png' %}" alt="Logo" width="85">
+        </a>
+	 	<nav>
+            <ul>
+            	<li><a href="#">Home</a></li>
+            	<li><a href="#">LogOut</a></li>
+                <div id="menuToggle">
+    				<input type="checkbox" />
+				    <span style="margin-top:-15px"></span>
+				    <span></span>
+				    <span></span>
+				    <ul id="menu">
+				      <a href="#"><li>Medical Store</li></a><br>
+				      <a href="#"><li>Blood Bank</li></a><br>
+				      <a href="#"><li>Patient Record</li></a><br>
+				      
+				    </ul>
+  				</div>
+            </ul>
+        </nav>
+    </header>
+    </div>
+    <div id="content">
+      <div id="columns-container">
+      <div class="column column-a">
+      		<div class="Services">
+	        <article>
+	            <h2>Hi XYZ Hospital!</h2>
+	            <div class="custom-form" style="margin-left:0px">
+					<div id="cover">
+					  <form method="get" action="">
+					    <div class="tb">
+					      <div class="td"><input type="text" placeholder="Search"></div>
+					      <div class="td" id="s-cover">
+					        <button type="submit">
+					          <div id="s-circle"></div>
+					          <span></span>
+					        </button>
+					      </div>
+					    </div>
+					  </form>
+					</div>
+	            </div>
+	        </article>
+	        	<div class="Cards">
+	            <ul>
+	                <li>
+	                    <img src="hospital.jpg" alt="hospital"><br><br><br>
+	                    <a href="#">Hospital</a>
+	                </li>
+	                <li>
+	                    <img src="doctor.jpg" alt="doctor"><br><br><br>
+	                    <a href="{% url 'Hospital:add_doctor'%}">Doctors</a>
+	                </li>
+	            </ul>
+	        	</div>
+	    	</div>
+      </div>
+      <div class="column column-b">
+	  {% block body %}
+	  {% endblock %}
+      </div>
+      </div>
+    </div>
+</div>
+</body>
+</html>

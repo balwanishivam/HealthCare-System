@@ -4,10 +4,11 @@ from django import forms
 class HospDetail(forms.ModelForm):
     class Meta:
         model=Hosp_detail
-        fields = ['name', 'address', 'contact', 'email', 'emergency_contact', 'user']
+        fields = ['name', 'address','city','pincode','contact', 'email', 'emergency_contact', 'user']
         exclude=('user',)
 
 class DoctorDetails(forms.ModelForm):
+    widgets={'day':forms.CheckboxSelectMultiple}
     class Meta:
         model=Doctor
         fields = ['name', 'speciality', 'qualification', 'contact', 'consult_hrs', 'working_days', 'user']
