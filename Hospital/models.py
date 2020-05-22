@@ -17,7 +17,10 @@ class Hosp_detail(models.Model):
 
 
 class Days(models.Model):
-    day = models.CharField(max_length=8)
+    day = models.CharField(max_length=12)
+
+    def __str__(self):
+        return self.day
 
 
 class Doctor(models.Model):

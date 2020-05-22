@@ -49,7 +49,7 @@ class AddDoctor(LoginRequiredMixin,View):
             provider=form.save(commit=False)
             form.instance.user = self.request.user
             provider.save()
-            return HttpResponse("<html>Doctor Added Successfully</html>")
+            return redirect('Hospital:index')
         
         return render(request,self.template_name,{'form':form})
 

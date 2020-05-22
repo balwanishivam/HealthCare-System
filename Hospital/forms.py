@@ -8,6 +8,7 @@ class HospDetail(forms.ModelForm):
         exclude=('user',)
 
 class DoctorDetails(forms.ModelForm):
+    widgets={'day':forms.CheckboxSelectMultiple}
     class Meta:
         model=Doctor
         fields = ['name', 'speciality', 'qualification', 'contact', 'consult_hrs', 'working_days', 'user']
