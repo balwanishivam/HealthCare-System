@@ -46,7 +46,7 @@ class AddDonor(LoginRequiredMixin,View):
         return render(request,self.template_name,{'form':form})
 
 class AddReceiver(LoginRequiredMixin,View):
-    form_class=ReceiverDetails
+    form_class=RecieverDetails
     template_name='BloodBank/add_receiver.html'
 
     def get(self,request):
@@ -65,7 +65,7 @@ class AddReceiver(LoginRequiredMixin,View):
 
 
 class Inventory(LoginRequiredMixin,View):
-    form_class=Inventory
+    form_class=BloodInventory
     template_name='BloodBank/inventory.html'
 
     def get(self,request):
@@ -79,7 +79,7 @@ class Inventory(LoginRequiredMixin,View):
             form.instance.user = self.request.user
             provider.save()
             return HttpResponse("<html>Donor added successfully</html>")
-        
+        form=self.form_class(None)
         return render(request,self.template_name,{'form':form})
 
 

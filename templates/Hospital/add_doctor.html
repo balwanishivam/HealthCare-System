@@ -5,28 +5,35 @@
       		<h2>Doctor Details</h2>
       	</div>
       	<div class="custom-form">
-                <form action="get">
+                <form method="POST" action="">
+				{% csrf_token%}
                 	<label for="name">Name</label><br>
-                    <input type="text" name="name" id="name" placeholder="Name"><br>
-
+                    {% comment %} <input type="text" name="name" id="name" placeholder="Name"><br> {% endcomment %}
+					{{ form.name}}<br>
                     <label for="qualification">Qualification</label><br>
-                    <input type="text" name="qualification" id="qualification" placeholder="Qualification"><br>
+					{{ form.qualification }}<br>
+                    {% comment %} <input type="text" name="qualification" id="qualification" placeholder="Qualification"><br> {% endcomment %}
                     <label for="specialist">Specialist</label><br>
-                    <input type="text" name="specialist" id="specialist" placeholder="Specialist"><br>
+					{{form.speciality}}<br>
+                    {% comment %} <input type="text" name="specialist" id="specialist" placeholder="Specialist"><br> {% endcomment %}
                     <label for="contact">Contact</label><br>
-                    <input type="text" name="contact" id="contact" placeholder="Contact Number"><br>
+					{{ form.contact }}<br>
+                    {% comment %} <input type="text" name="contact" id="contact" placeholder="Contact Number"><br> {% endcomment %}
 
                     <label for="appt">Consulting time</label><br>
-  					<label for="time" id="time">From:</label><input type="time" id="from" name="from">
-  					<label for="time">to:</label><input type="time" id="to" name="to">
+  					<label for="time" id="time">From:</label>{{form.starting_time}}
+					{% comment %} <input type="time" id="from" name="from"> {% endcomment %}<br>
+  					<label for="time">To:  </label>{{form.ending_time}}
+					{% comment %} <input type="time" id="to" name="to"> {% endcomment %}
   					<br>
                     
                     <label for="days">Number of Days</label><br>
-					    <select id="number" name="number">
+					{{ form.working_days}}
+					    {% comment %} <select id="number" name="number">
 					      <option value="1">1</option>
 					      <option value="2">2</option>
 					      <option value="3">3</option>
-					    </select>
+					    </select> {% endcomment %}
 
 					    <br><br>
 
