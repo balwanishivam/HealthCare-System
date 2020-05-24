@@ -2,6 +2,8 @@ from .models import *
 from django import forms
 from django.forms import widgets
 
+class TimeInput(forms.TimeInput):
+    input_type="time"
 
 class HospDetail(forms.ModelForm):
     class Meta:
@@ -14,8 +16,8 @@ class HospDetail(forms.ModelForm):
 class DoctorDetails(forms.ModelForm):
     widgets={'day':forms.CheckboxSelectMultiple}
     contact =forms.CharField(max_length=10)
-    # start=forms.TimeInput()
-    # end=forms.TimeInput()
+    starting_time=forms.TimeField(widget=TimeInput)
+    ending_time=forms.TimeField(widget=TimeInput)
     class Meta:
         model=Doctor
         fields = ['name', 'speciality', 'qualification', 'contact', 'starting_time','ending_time', 'working_days', 'user']
