@@ -27,5 +27,60 @@ class UserCreate(LoginRequiredMixin,View):
         
         return render(request,self.template_name,{'form':form})
 
+class AddDonor(LoginRequiredMixin,View):
+    form_class=DonorDetails
+    template_name='BloodBank/add_donor.html'
+
+    def get(self,request):
+        form=self.form_class(None)
+        return render(request,self.template_name,{'form':form})
+
+    def post(self,request):
+        form=self.form_class(request.POST)
+        if form.is_valid():
+            provider=form.save(commit=False)
+            form.instance.user = self.request.user
+            provider.save()
+            return HttpResponse("<html>Donor added successfully</html>")
+        
+        return render(request,self.template_name,{'form':form})
+
+class AddReceiver(LoginRequiredMixin,View):
+    form_class=ReceiverDetails
+    template_name='BloodBank/add_receiver.html'
+
+    def get(self,request):
+        form=self.form_class(None)
+        return render(request,self.template_name,{'form':form})
+
+    def post(self,request):
+        form=self.form_class(request.POST)
+        if form.is_valid():
+            provider=form.save(commit=False)
+            form.instance.user = self.request.user
+            provider.save()
+            return HttpResponse("<html>Receiver added successfully</html>")
+        
+        return render(request,self.template_name,{'form':form})
+
+
+class Inventory(LoginRequiredMixin,View):
+    form_class=Inventory
+    template_name='BloodBank/inventory.html'
+
+    def get(self,request):
+        form=self.form_class(None)
+        return render(request,self.template_name,{'form':form})
+
+    def post(self,request):
+        form=self.form_class(request.POST)
+        if form.is_valid():
+            provider=form.save(commit=False)
+            form.instance.user = self.request.user
+            provider.save()
+            return HttpResponse("<html>Donor added successfully</html>")
+        
+        return render(request,self.template_name,{'form':form})
+
 
 # Create your views here.
