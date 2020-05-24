@@ -1,5 +1,7 @@
 from .models import *
 from django import forms
+from django.forms import widgets
+
 
 class HospDetail(forms.ModelForm):
     class Meta:
@@ -7,13 +9,20 @@ class HospDetail(forms.ModelForm):
         fields = ['name', 'address','city','pincode','contact', 'email', 'emergency_contact', 'user']
         exclude=('user',)
 
+
+
 class DoctorDetails(forms.ModelForm):
     widgets={'day':forms.CheckboxSelectMultiple}
+    contact =forms.CharField(max_length=10)
+    # start=forms.TimeInput()
+    # end=forms.TimeInput()
     class Meta:
         model=Doctor
-        fields = ['name', 'speciality', 'qualification', 'contact', 'consult_hrs', 'working_days', 'user']
+        fields = ['name', 'speciality', 'qualification', 'contact', 'starting_time','ending_time', 'working_days', 'user']
         exclude=('user',)
-        
+
+
+
 class PatientDetails(forms.ModelForm):
     class Meta:
         model=Patient
