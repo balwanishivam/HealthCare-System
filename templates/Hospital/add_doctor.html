@@ -1,49 +1,43 @@
 {% extends 'Hospital/layout.html'%}
 {% block title %} Doctor Registration {% endblock %}
 {% block body %}
-    <div class="container h-100">
-		<div class="d-flex justify-content-center h-100">
-			<div class="user_card">
-				<div class="d-flex justify-content-center">
-					<h3 id="form-title">Enter Doctor Details</h3>
-				</div>
-				<div class="d-flex justify-content-center form_container">
-                    {% if error_message %}
-                    <p><strong>{{error_message}}</strong></p>
-                	{% endif  %}
-					<form method="POST" action="">
-					{% csrf_token %}
-						<div class="input-group mb-3">
-							<label for="name"> Doctor's Name </label>
-							{{ form.name }}
-						</div>
-						<div class="input-group mb-2">
-							<label for="name">Specialist </label>
-							{{ form.speciality }}
-						</div>
-						<div class="input-group mb-2">
-							<label for="name">Qualification  </label>
-							{{ form.qualification }}
-						</div>
-						<div class="input-group mb-2">
-							<label for="name">Contact  </label>
-							{{ form.contact }}
-						</div>
-                        <div class="input-group mb-2">
-							<label for="name">Consultaing Hours  </label>
-							{{ form.consult_hrs }}
-						</div>
-                        <div class="input-group mb-2">
-							<label for="name">Days</label>
-							{{ form.working_days }}
-						</div>
-						
-				   		<div class="d-flex justify-content-center mt-3 login_container">
-				 			<input class="btn login_btn" type="submit" value="Submit">
-				   		</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>	
+    <div class="heading">
+      		<h2>Doctor Details</h2>
+      	</div>
+      	<div class="custom-form">
+                <form method="POST" action="">
+				{% csrf_token%}
+                	<label for="name">Name</label><br>
+                    {% comment %} <input type="text" name="name" id="name" placeholder="Name"><br> {% endcomment %}
+					{{ form.name}}<br>
+                    <label for="qualification">Qualification</label><br>
+					{{ form.qualification }}<br>
+                    {% comment %} <input type="text" name="qualification" id="qualification" placeholder="Qualification"><br> {% endcomment %}
+                    <label for="specialist">Specialist</label><br>
+					{{form.speciality}}<br>
+                    {% comment %} <input type="text" name="specialist" id="specialist" placeholder="Specialist"><br> {% endcomment %}
+                    <label for="contact">Contact</label><br>
+					{{ form.contact }}<br>
+                    {% comment %} <input type="text" name="contact" id="contact" placeholder="Contact Number"><br> {% endcomment %}
+
+                    <label for="appt">Consulting time</label><br>
+  					<label for="time" id="time">From:</label>{{form.starting_time}}
+					{% comment %} <input type="time" id="from" name="from"> {% endcomment %}
+  					<label for="time">To:  </label>{{form.ending_time}}
+					{% comment %} <input type="time" id="to" name="to"> {% endcomment %}
+  					<br>
+                    
+                    <label for="days">Number of Days</label><br>
+					{{ form.working_days}}
+					    {% comment %} <select id="number" name="number">
+					      <option value="1">1</option>
+					      <option value="2">2</option>
+					      <option value="3">3</option>
+					    </select> {% endcomment %}
+
+					    <br><br>
+
+					<input type="submit" name="Submit" id ="Submit" value="Submit">
+                </form>
+            </div>
 {% endblock %}

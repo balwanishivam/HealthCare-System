@@ -30,7 +30,7 @@ After creating virtual environment
 $ pip install -r requirements.txt
 $ python manage.py runserver
 ```
-### To mazke migrations
+### To make migrations
 ```sh
 $ python manage.py makemigrations
 $ python manage.py migrate
