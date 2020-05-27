@@ -3,7 +3,7 @@ html {
 margin: 0;
 padding: 0;
 height: 100%;
-background: #7abecc !important;
+background: #044a58 !important;
 }
 
 header   {
@@ -60,7 +60,7 @@ header   {
 			width: 350px;
 			margin-top: auto;
 			margin-bottom: auto;
-			background: #fcd260;
+			background: #ffbf00;
 			position: relative;
 			display: flex;
 			justify-content: center;

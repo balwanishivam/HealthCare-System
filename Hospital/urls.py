@@ -8,11 +8,13 @@ app_name="Hospital"
 urlpatterns=[
     path('register/',views.UserCreate.as_view(),name="register"),
     path('',views.Index.as_view(),name="index"),
+    path('view_doctor/',views.ViewDoctor.as_view(),name="view_doctor"),
     path('add_patient_record',views.AddPatient.as_view(),name='add_patient_record'),
     path('add_doctor',views.AddDoctor.as_view(),name='add_doctor'),
     path('add_test',views.AddTest.as_view(),name='add_test'),
     path('add_conducted',views.PatientTest.as_view(),name='add_conducted'),
-    
+    path('<int:pk>/delete',views.DeleteDoctor.as_view(),name='delete_doctor'),
+    path('<int:pk>/edit',views.EditDoctor.as_view(),name='edit_doctor'),
     # path('/report/',views.reports,name="report"),
     # path('search/',views.search,name="search"),
     # path('serach/city/<slug:city>/',views.city_search,name="city_search"),

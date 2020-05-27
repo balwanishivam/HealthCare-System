@@ -37,7 +37,7 @@ class Index(View):
 #Add Doctor's details
 class AddDoctor(LoginRequiredMixin,View):
     form_class=DoctorDetails
-    template_name='Hospital/add_doctor.html'
+    template_name='Hospital/doctor_form.html'
 
     def get(self,request):
         form=self.form_class(None)
@@ -109,4 +109,24 @@ class PatientTest(LoginRequiredMixin,View):
             return HttpResponse("<html>Test Conducted Added Succesfully</html>")
         
         return render(request,self.template_name,{'form':form})
+
+class ViewDoctor(ListView):
+    template_name='Hospital/doctor.html'
+    context_object_name='doctors'
+    model=Doctor
+    def get_queryset(self):
+        qs = super().get_queryset()
+        user = self.request.user
+        if user is None:
+            return qs
+        return qs.filter(user=user)
+
+class EditDoctor(UpdateView):
+    model=Doctor
+    form_class=DoctorDetails
+
+class DeleteDoctor(DeleteView):
+    model=Doctor
+    success_url=reverse_lazy('Hospital:view_doctor')
+
 # Create your views here.
