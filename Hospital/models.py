@@ -33,6 +33,9 @@ class Doctor(models.Model):
     working_days= models.ManyToManyField(Days)
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
 
+    def get_absolute_url(self):
+        return reverse('Hospital:view_doctor')
+
     
 class Patient(models.Model):
     name=models.CharField(max_length=200)

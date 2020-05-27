@@ -291,6 +291,7 @@ input, button
 {
     display: table-cell;
     vertical-align:middle;
+    align:middle;
 }
 
 input, button
@@ -358,6 +359,15 @@ button
     width: 84px;
     height: 96px;
     cursor: pointer;
+}
+.btn
+{
+    position: relative;
+    display: block;
+    width: 84px;
+    height: 50px;
+    cursor: pointer;
+    margin-left: 25px;
 }
 
 #s-circle
