@@ -1,6 +1,7 @@
 {% extends 'Hospital/base.html'%}
 {% load static%}
 {% block title%} Organisation Information {% endblock %}
+
 {% block body%}
 	<div class="container h-100">
 		<div class="d-flex justify-content-center h-100">
@@ -14,34 +15,81 @@
                 	{% endif  %}
 					<form method="POST" action="">
 					{% csrf_token %}
+					<table>
+					<tbody>
+					<tr>
 						<div class="input-group mb-3">
+						<td>
 							<label for="name">Organisation Name  </label>
+						</td>
+						<td>
 							{{ form.name }}
+						</td>
 						</div>
+					</tr>
+					<tr>
 						<div class="input-group mb-2">
+						<td>
 							<label for="name">Address  </label>
+						</td>
+						<td>
 							{{ form.address }}
+						</td>
 						</div>
+					</tr>
+					<tr>
 						<div class="input-group mb-2">
+						<td>
 							<label for="name">City  </label>
+						</td>
+						<td>
 							{{ form.city }}
+						</td>
 						</div>
+					</tr>
+					<tr>
 						<div class="input-group mb-2">
+						<td>
 							<label for="name">Pincode  </label>
+						</td>
+						<td>
 							{{ form.pincode }}
+						</td>
 						</div>
+					</tr>
+					<tr>
                         <div class="input-group mb-2">
+						<td>
 							<label for="name">Email  </label>
+						</td>
+						<td>
 							{{ form.email }}
+						</td>
 						</div>
+					</tr>
+					<tr>
                         <div class="input-group mb-2">
+						<td>
 							<label for="name">Contact No </label>
+						</td>
+						<td>
 							{{ form.contact }}
+						</td>
 						</div>
+					</tr>
+					<tr>
 						<div class="input-group mb-2">
+						<td>
 							<label for="name">Emergency Contact No </label>
+						</td>
+						<td>
 							{{ form.emergency_contact }}
+						</td>
 						</div>
+					</tr>
+					<tr>
+					</tbody>
+					</table>
 				   		<div class="d-flex justify-content-center mt-3 login_container">
 				 			<input class="btn login_btn" type="submit" value="Submit">
 				   		</div>
