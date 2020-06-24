@@ -52,7 +52,7 @@ class AddDoctor(LoginRequiredMixin,View):
             provider=form.save(commit=False)
             form.instance.user = self.request.user
             provider.save()
-            return redirect('Hospital:index')
+            return redirect('Hospital:view_doctor')
         
         return render(request,self.template_name,{'form':form})
 
@@ -68,7 +68,7 @@ class ViewDoctor(ListView):
             return qs
         return qs.filter(user=user)
 
-#Edit Doctor(still to be updated)
+
 class EditDoctor(UpdateView):
     model=Doctor
     form_class=DoctorDetails
@@ -96,7 +96,7 @@ class AddPatient(LoginRequiredMixin,View):
             provider=form.save(commit=False)
             form.instance.user = self.request.user
             provider.save()
-            return HttpResponse("<html>Patient record added sucessfully</html>")
+            return redirect('Hospital:view_patient')
         
         return render(request,self.template_name,{'form':form})
 
@@ -116,6 +116,8 @@ class ViewPatient(ListView):
 class EditPatient(UpdateView):
     model=Patient
     form_class=PatientDetails
+    template_name='Hospital/patient_form.html'
+    success_url=reverse_lazy('Hospital:view_patient')
 
 #Delete Patient
 class DeletePatient(DeleteView):
@@ -138,7 +140,7 @@ class AddTest(LoginRequiredMixin,View):
             provider=form.save(commit=False)
             form.instance.user = self.request.user
             provider.save()
-            return HttpResponse("<html>Test Added Successfully</html>")
+            return redirect('Hospital:view_test')
         
         return render(request,self.template_name,{'form':form})
 
@@ -158,6 +160,8 @@ class ViewTest(ListView):
 class EditTest(UpdateView):
     model=Tests
     form_class=TestDetails
+    template_name='Hospital/test_form.html'
+    success_url=reverse_lazy('Hospital:view_test')
 
 #Delete Tests
 class DeleteTest(DeleteView):
@@ -181,7 +185,7 @@ class AddConducted(LoginRequiredMixin,View):
             provider=form.save(commit=False)
             form.instance.user = self.request.user
             provider.save()
-            return HttpResponse("<html>Test Conducted Added Succesfully</html>")
+            return redirect('Hospital:view_conducted')
         
         return render(request,self.template_name,{'form':form})
 
@@ -201,6 +205,8 @@ class ViewConducted(ListView):
 class EditConducted(UpdateView):
     model=Conducted
     form_class=TestConducted
+    template_name='Hospital/conducted_form.html'
+    success_url=reverse_lazy('Hospital:view_conducted')
 
 #Delete Conducted
 class DeleteConducted(DeleteView):
