@@ -1,0 +1,27 @@
+{% extends 'Hospital/layout.html'%}
+{% block title %} Test Registration {% endblock %}
+{% block body %}
+    <div class="heading">
+      		<h2>Test Details</h2>
+      	</div>
+      	<div class="custom-form">
+                <form method="POST" action="">
+				{% csrf_token%}
+                	<label for="test_id">Test ID</label><br>
+                    {% comment %} <input type="text" name="id" id="id" placeholder="ID"><br> {% endcomment %}
+					{{ form.test_id }}<br>
+                    <label for="test_name">Name</label><br>
+					{{ form.name }}<br>
+                    {% comment %} <input type="text" name="name" id="name" placeholder="Test name"><br> {% endcomment %}
+                    <label for="test_type">Test type</label><br>
+					{{form.test_type}}<br>
+                    {% comment %} <input type="text" name="test_type" id="test_type" placeholder="Test type"><br> {% endcomment %}
+                    <label for="contact">Cost</label><br>
+					{{ form.cost }}<br>
+                    {% comment %} <input type="text" name="cost" id="cost" placeholder="cost"><br> {% endcomment %}
+                    
+
+					<input type="submit" name="Submit" id ="Submit" value="Submit">
+                </form>
+            </div>
+{% endblock %}
