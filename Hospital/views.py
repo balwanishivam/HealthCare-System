@@ -72,6 +72,8 @@ class ViewDoctor(ListView):
 class EditDoctor(UpdateView):
     model=Doctor
     form_class=DoctorDetails
+    template_name='Hospital/doctor_form.html'
+    success_url=reverse_lazy('Hospital:view_doctor')
 
 #Delete Doctor
 class DeleteDoctor(DeleteView):
@@ -116,7 +118,7 @@ class EditPatient(UpdateView):
     form_class=PatientDetails
 
 #Delete Patient
-class Deletepatient(DeleteView):
+class DeletePatient(DeleteView):
     model=Patient
     success_url=reverse_lazy('Hospital:view_patient')
 
@@ -165,7 +167,7 @@ class DeleteTest(DeleteView):
 
 #Test Conducted
 # Patient Test Conducted 
-class PatientTest(LoginRequiredMixin,View):
+class AddConducted(LoginRequiredMixin,View):
     form_class=TestConducted
     template_name='Hospital/conducted_form.html'
 
