@@ -1,0 +1,66 @@
+{% extends 'hospital/layout.html'%}
+{% load static %}
+{% block title %}Tests{% endblock %}
+{% block body %}
+     <h3>Tests</h3>
+
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <br><br><br>
+                    
+                    <a href="{% url 'Hospital:add_test'%}">
+                        <button type="button" class="btn btn-dark btn-group-small" height="45px">
+                            Add 
+                        </button>
+                    </a>
+                    
+                    <table class="table" align="center">
+                        <thead>
+                        <tr>
+                            <th>Test ID</th>
+                            <th>Test name</th>
+                            <th>Test type</th>
+                            <th>Cost</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for test in tests %}
+                            <tr>
+                                <td>
+                                    {{ test.test_id }}
+                                </td>
+                                <td>
+                                    {{ test.name }}
+                                </td>
+                                <td>
+                                    {{ test.test_type }}
+                                </td>
+                                <td>
+                                    {{test.cost}}
+                                </td>
+                                
+                                <td>
+                                    <form action="{% url 'Hospital:delete_test' test.id %}" method="post" style="display: inline;">
+                                     {% csrf_token %}
+                                     <input type="hidden" name="album_id" value="{{ album.id }}" />
+                                     <button type="submit" class="btn btn-default btn-sm">
+                                     <i class="fas fa-trash"></i>
+                                     </button>
+                                     </form>
+                                 </td>
+                                 <td>
+                                     <form action="{% url 'Hospital:edit_test' test.id %}" method="post" style="display: inline;">
+                                     {% csrf_token %}
+                                     <input type="hidden" name="album_id" value="{{ album.id }}" />
+                                     <button type="submit" class="btn btn-default btn-sm">
+                                     <i class="fas fa-edit"></i>
+                                     </button>
+                                     </form>
+                                 </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+{% endblock %}
