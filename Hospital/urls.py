@@ -8,25 +8,29 @@ app_name="Hospital"
 urlpatterns=[
     path('register/',views.UserCreate.as_view(),name="register"),
     path('',views.Index.as_view(),name="index"),
-    path('add_patient_record',views.AddPatient.as_view(),name='add_patient_record'),
+
+    #Doctor Url
+    path('view_doctor/',views.ViewDoctor.as_view(),name="view_doctor"),
     path('add_doctor',views.AddDoctor.as_view(),name='add_doctor'),
+    path('<int:pk>/delete_doctor',views.DeleteDoctor.as_view(),name='delete_doctor'),
+    path('<int:pk>/edit_doctor',views.EditDoctor.as_view(),name='edit_doctor'),
+
+    #Patient Url
+    path('view_patient/',views.ViewPatient.as_view(),name="view_patient"),
+    path('add_patient',views.AddPatient.as_view(),name='add_patient'),
+    path('<int:pk>/delete_patient',views.DeletePatient.as_view(),name='delete_patient'),
+    path('<int:pk>/edit_patient',views.EditPatient.as_view(),name='edit_patient'),
+   
+    #Test Url
+    path('view_test/',views.ViewTest.as_view(),name="view_test"),
     path('add_test',views.AddTest.as_view(),name='add_test'),
-    path('add_conducted',views.PatientTest.as_view(),name='add_conducted'),
+    path('<int:pk>/delete_test',views.DeleteTest.as_view(),name='delete_test'),
+    path('<int:pk>/edit_test',views.EditTest.as_view(),name='edit_test'),
+
+    #Conducted Url
+    path('view_conducted/',views.ViewConducted.as_view(),name="view_conducted"),
+    path('add_conducted',views.AddConducted.as_view(),name='add_conducted'),
+    path('<int:pk>/delete_conducted',views.DeleteConducted.as_view(),name='delete_conducted'),
+    path('<int:pk>/edit_conducted',views.EditConducted.as_view(),name='edit_conducted'),
     
-    # path('/report/',views.reports,name="report"),
-    # path('search/',views.search,name="search"),
-    # path('serach/city/<slug:city>/',views.city_search,name="city_search"),
-    # path('search/doctor/<slug:doctor>/',views.doctor_search,name='doctor_search'),
-    # path('admin/',views.admin,name='admin'),
-    # EDIT ALL THESE DETAILS 
-    # path('admin/add_patient_record',views.add_patient_record,name='add_patient_record'),
-    # path('admin/add_doctor',views.add_doctor,name='add_doctor'),
-    # path('admin/add_tests',views.add_tests,name='add_tests'),
-    # path('admin/add_conducted',views.add_conducted,name='add_conducted'),
-    
-    # DELETE THESE RECORDS
-    # path('admin/add_patient_record',views.add_patient_record,name='add_patient_record'),
-    # path('admin/add_doctor',views.add_doctor,name='add_doctor'),
-    # path('admin/add_tests',views.add_tests,name='add_tests'),
-    # path('admin/add_conducted',views.add_conducted,name='add_conducted'),
 ]

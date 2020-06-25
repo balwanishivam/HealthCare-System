@@ -21,7 +21,8 @@ class UserCreate(LoginRequiredMixin,View):
         form=self.form_class(request.POST)
         if form.is_valid():
             provider=form.save(commit=False)
-            form.instance.user = self.request.user
+            print(provider.name)
+            provider.user = self.request.user
             provider.save()
             return redirect('Hospital:index')
         
@@ -34,10 +35,12 @@ class Index(View):
     def get(self,request):
         return render(request,self.template_name)
 
+
+#Doctor's Views
 #Add Doctor's details
 class AddDoctor(LoginRequiredMixin,View):
     form_class=DoctorDetails
-    template_name='Hospital/add_doctor.html'
+    template_name='Hospital/doctor_form.html'
 
     def get(self,request):
         form=self.form_class(None)
@@ -49,14 +52,39 @@ class AddDoctor(LoginRequiredMixin,View):
             provider=form.save(commit=False)
             form.instance.user = self.request.user
             provider.save()
-            return redirect('Hospital:index')
+            return redirect('Hospital:view_doctor')
         
         return render(request,self.template_name,{'form':form})
 
+#View Doctor
+class ViewDoctor(ListView):
+    template_name='Hospital/doctor.html'
+    context_object_name='doctors'
+    model=Doctor
+    def get_queryset(self):
+        qs = super().get_queryset()
+        user = self.request.user
+        if user is None:
+            return qs
+        return qs.filter(user=user)
+
+
+class EditDoctor(UpdateView):
+    model=Doctor
+    form_class=DoctorDetails
+    template_name='Hospital/doctor_form.html'
+    success_url=reverse_lazy('Hospital:view_doctor')
+
+#Delete Doctor
+class DeleteDoctor(DeleteView):
+    model=Doctor
+    success_url=reverse_lazy('Hospital:view_doctor')
+
+#Patient Record
 # Add Patient's Records
 class AddPatient(LoginRequiredMixin,View):
     form_class=PatientDetails
-    template_name='Hospital/add_patient.html'
+    template_name='Hospital/patient_form.html'
 
     def get(self,request):
         form=self.form_class(None)
@@ -68,14 +96,39 @@ class AddPatient(LoginRequiredMixin,View):
             provider=form.save(commit=False)
             form.instance.user = self.request.user
             provider.save()
-            return HttpResponse("<html>Patient record added sucessfully</html>")
+            return redirect('Hospital:view_patient')
         
         return render(request,self.template_name,{'form':form})
 
+#View Patient
+class ViewPatient(ListView):
+    template_name='Hospital/patient.html'
+    context_object_name='patients'
+    model=Patient
+    def get_queryset(self):
+        qs = super().get_queryset()
+        user = self.request.user
+        if user is None:
+            return qs
+        return qs.filter(user=user)
+
+#Edit Patient(still to be updated)
+class EditPatient(UpdateView):
+    model=Patient
+    form_class=PatientDetails
+    template_name='Hospital/patient_form.html'
+    success_url=reverse_lazy('Hospital:view_patient')
+
+#Delete Patient
+class DeletePatient(DeleteView):
+    model=Patient
+    success_url=reverse_lazy('Hospital:view_patient')
+
+# Test Available
 # Test details
 class AddTest(LoginRequiredMixin,View):
     form_class=TestDetails
-    template_name='Hospital/add_test.html'
+    template_name='Hospital/test_form.html'
 
     def get(self,request):
         form=self.form_class(None)
@@ -87,14 +140,40 @@ class AddTest(LoginRequiredMixin,View):
             provider=form.save(commit=False)
             form.instance.user = self.request.user
             provider.save()
-            return HttpResponse("<html>Test Added Successfully</html>")
+            return redirect('Hospital:view_test')
         
         return render(request,self.template_name,{'form':form})
 
+#View Tests
+class ViewTest(ListView):
+    template_name='Hospital/test.html'
+    context_object_name='tests'
+    model=Tests
+    def get_queryset(self):
+        qs = super().get_queryset()
+        user = self.request.user
+        if user is None:
+            return qs
+        return qs.filter(user=user)
+
+#Edit Tests(still to be updated)
+class EditTest(UpdateView):
+    model=Tests
+    form_class=TestDetails
+    template_name='Hospital/test_form.html'
+    success_url=reverse_lazy('Hospital:view_test')
+
+#Delete Tests
+class DeleteTest(DeleteView):
+    model=Tests
+    success_url=reverse_lazy('Hospital:view_test')
+
+
+#Test Conducted
 # Patient Test Conducted 
-class PatientTest(LoginRequiredMixin,View):
+class AddConducted(LoginRequiredMixin,View):
     form_class=TestConducted
-    template_name='Hospital/add_conducted.html'
+    template_name='Hospital/conducted_form.html'
 
     def get(self,request):
         form=self.form_class(None)
@@ -106,7 +185,32 @@ class PatientTest(LoginRequiredMixin,View):
             provider=form.save(commit=False)
             form.instance.user = self.request.user
             provider.save()
-            return HttpResponse("<html>Test Conducted Added Succesfully</html>")
+            return redirect('Hospital:view_conducted')
         
         return render(request,self.template_name,{'form':form})
+
+#View Conducted
+class ViewConducted(ListView):
+    template_name='Hospital/conducted.html'
+    context_object_name='conducted'
+    model=Conducted
+    def get_queryset(self):
+        qs = super().get_queryset()
+        user = self.request.user
+        if user is None:
+            return qs
+        return qs.filter(user=user)
+
+#Edit Conducted(still to be updated)
+class EditConducted(UpdateView):
+    model=Conducted
+    form_class=TestConducted
+    template_name='Hospital/conducted_form.html'
+    success_url=reverse_lazy('Hospital:view_conducted')
+
+#Delete Conducted
+class DeleteConducted(DeleteView):
+    model=Conducted
+    success_url=reverse_lazy('Hospital:view_conducted')
+
 # Create your views here.

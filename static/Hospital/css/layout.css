@@ -13,6 +13,7 @@ body   {
 }
 
 
+
 body     {
   background:#FFF;
   font-family: Arial, Helvetica, sans-serif;
@@ -46,7 +47,6 @@ position:absolute;
   height: 100%;
   width: 100%;
 }
-
 
 .column-a {
   background-color:#fff;
@@ -263,13 +263,12 @@ a:hover
 {
     display: table;
     width: 100%;
-    float:left;
 }
 
 .td
 {
     display: table-cell;
-    vertical-align:center;
+    vertical-align: middle;
 }
 
 input, button
@@ -292,6 +291,7 @@ input, button
 {
     display: table-cell;
     vertical-align:middle;
+    align:middle;
 }
 
 input, button
@@ -308,15 +308,15 @@ input, button
 {
     position: absolute;
     top: 40%;
-    left: 7%;
+    left: 0%;
+    right:50;
     width: 800px;
     padding: 0 px;
     margin: -83px auto 0 auto;
     background-color: #F4F1BB;
     border-radius: 20px;
     box-shadow: 0 5px 40px #5ca4a9, 0 0 0 10px #5ca4a9;
-    transform: scale(0.5);
-    transform:translate(-50,0);
+    transform: scale(0.6);
 }
 
 form
@@ -324,17 +324,26 @@ form
     height: 96px;
 }
 
-input[type="text"]
+.td input[type="text"]
 {
     width: 100%;
     height: 96px;
     font-size: 60px;
     line-height: 1;
+    border:none;
+    background-color:transparent;
+
 }
 
-input[type="text"]::placeholder
+.td input[type="text"]::placeholder
 {
     color: #9BC1A9;
+}
+
+.td input[type="text"]:focus
+{
+	background-color:transparent;
+	outline:none;
 }
 
 #s-cover
@@ -350,6 +359,15 @@ button
     width: 84px;
     height: 96px;
     cursor: pointer;
+}
+.btn
+{
+    position: relative;
+    display: block;
+    width: 84px;
+    height: 50px;
+    cursor: pointer;
+    margin-left: 25px;
 }
 
 #s-circle
@@ -444,20 +462,21 @@ button span:before, button span:after
 .Services article{
     margin-top: 20%;
     margin-bottom: 1%;
-    margin-left:7%;
+    margin-left:30%;
     margin-right:20%;
     display: block;
     text-align: left;
 }
 
 .Services article h2{
+	left :50px;
     font-size: 40px;
     font-family:"Arial Black", Gadget, sans-serif;
     color:#ed6a5a;
 }
 
 .Services .Cards{
-	margin-left:0%;
+	margin-left:7%;
     display: block;
     max-width: 1200px;
     white-space: nowrap;
@@ -492,59 +511,90 @@ button span:before, button span:after
 	margin-bottom:-25px;
 }
 
-.user_card {
-  width: 350px;
-  margin-top: auto;
-  margin-bottom: auto;
-  background: #fcd260;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 5px;
-
+.heading h2
+{
+	text-align:center;
+	font-size:40px;
+	margin-top:130px;
+	font-family:"Arial Black", Gadget, sans-serif;
+	color:#ed6a5a;
 }
 
-.form_container {
-  margin-top: 20px;
+.custom-form{
+	margin-top:5px;
+	margin-left:180px;
+    display: inline-block;
+    max-width: 100%;
+    
 }
 
-#form-title{
-  color: #fff;
-  
+label
+{
+	color:#5CA4A9;
 }
 
-.login_btn {
-  width: 100%;
-  background: #33ccff !important;
-  color: white !important;
+input[type=text] {
+
+	vertical-align:center;
+  width: 400px;
+  height:36px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #9bc1bc;
+  border-radius: 20px;
 }
-.login_btn:focus {
-  box-shadow: none !important;
-  outline: 0px !important;
+select
+{
+  vertical-align:center;
+  width: 400px;
+  height:40px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #9bc1bc;
+  border-radius: 20px;
+  background:transparent;
 }
-.login_container {
-  padding: 0 2rem;
-}
-.input-group-text {
-  background: #f7ba5b !important;
-  color: white !important;
-  border: 0 !important;
-  border-radius: 0.25rem 0 0 0.25rem !important;
-}
-.input_user,
-.input_pass:focus {
-  box-shadow: none !important;
-  outline: 0px !important;
+input[type=time]
+{
+  vertical-align:center;
+  width: 165px;
+  height:36px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #9bc1bc;
+  border-radius: 20px;
 }
 
-#messages{
-  background-color: grey;
-  color: #fff;
-  padding: 10px;
-  margin-top: 10px;
+input[type=text]:focus, input[type=time]:focus, select:focus
+{
+	outline:none;
+	background-color:white;
+}
+.custom-form #Submit{
+	margin-left:130px;
+    width: 10em;
+    display: block;
+    padding: 0.85em 1.5em;
+    border: none;
+    border-radius: 100px;
+    background-color: #ed6a5a;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 10%;
+    vertical-align:middle;
+}
+
+.custom-form #Submit:hover
+{
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(145, 92, 182);
+}
+
+.custom-form #Submit:focus
+{
+	outline:none;
 }

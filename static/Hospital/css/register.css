@@ -3,7 +3,7 @@ html {
 margin: 0;
 padding: 0;
 height: 100%;
-background: #044a58 !important;
+background: #7abecc !important;
 }
 
 header   {
@@ -60,7 +60,7 @@ header   {
 			width: 350px;
 			margin-top: auto;
 			margin-bottom: auto;
-			background: #ffbf00;
+			background: #95faa3 !important;
 			position: relative;
 			display: flex;
 			justify-content: center;
@@ -95,7 +95,7 @@ header   {
 			padding: 0 2rem;
 		}
 		.input-group-text {
-			background: #f7ba5b !important;
+			background: #08f300 !important;
 			color: white !important;
 			border: 0 !important;
 			border-radius: 0.25rem 0 0 0.25rem !important;

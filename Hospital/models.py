@@ -28,9 +28,13 @@ class Doctor(models.Model):
     speciality=models.CharField(max_length=200)
     qualification=models.CharField(max_length=10)
     contact=models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
-    consult_hrs=models.TimeField(auto_now=False, auto_now_add=False)
+    starting_time=models.TimeField(auto_now=False, auto_now_add=False)
+    ending_time=models.TimeField(auto_now=False, auto_now_add=False)
     working_days= models.ManyToManyField(Days)
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('Hospital:view_doctor')
 
     
 class Patient(models.Model):

@@ -1,0 +1,69 @@
+{% extends 'hospital/layout.html'%}
+{% load static %}
+{% block title %}Doctors{% endblock %}
+{% block body %}
+     <h3>Doctors</h3>
+
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <br><br><br>
+                   
+                    <a href="{% url 'Hospital:add_doctor'%}">
+                                                <button type="button" class="btn btn-dark btn-group-small" height="45px">
+                                                    Add 
+                                                </button>
+                                            </a>
+                    <table class="table" align="center">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Specialist</th>
+                            <th>Contact</th>
+                            <th>Clinic Timings</th>
+                            <th>Working Days</th>
+                            <th>Delete</th>
+                            <th>Edit</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for doctor in doctors %}
+                            <tr>
+                                <td>
+                                {{ doctor.name }}</td>
+                                <td>
+                                    {{ doctor.speciality}}
+                                </td>
+                                <td>
+                                    {{doctor.contact}}
+                                </td>
+                                <td>
+                                    {{doctor.starting_time}} to {{doctor.ending_time}}
+                                </td> 
+                                <td>
+                                    {{doctor.working_days}}
+                                </td>
+                                <td>
+                                   <form action="{% url 'Hospital:delete_doctor' doctor.id %}" method="post" style="display: inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="album_id" value="{{ album.id }}" />
+                                    <button type="submit" class="btn btn-default btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                    </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="{% url 'Hospital:edit_doctor' doctor.id %}" method="get" style="display: inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="album_id" value="{{ album.id }}" />
+                                    <button type="submit" class="btn btn-default btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                    </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+{% endblock %}
