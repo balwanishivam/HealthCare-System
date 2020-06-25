@@ -1,1 +1,32 @@
-{{Donor}}
+{% extends 'BloodBank/layout.html'%}
+{% block title %} Donor Registration {% endblock %}
+{% block body %}
+    <div class="heading">
+      		<h2>Donor Details</h2>
+      	</div>
+      	<div class="custom-form">
+                <form method="POST" action="">
+				{% csrf_token%}
+                	<label for="name">Name</label><br>
+                    {% comment %} <input type="text" name="name" id="name" placeholder="name"><br> {% endcomment %}
+					{{ form.name }}<br>
+                    <label for="contact">Contact No</label><br>
+					{{ form.contact }}<br>
+                    {% comment %} <input type="text" name="contact" id="contact" placeholder="contact"><br> {% endcomment %}
+                    <label for="email">Email</label><br>
+					{{form.email}}<br>
+                    {% comment %} <input type="text" name="email" id="email" placeholder="email"><br> {% endcomment %}
+                    <label for="area">Area</label><br>
+					{{ form.area }}<br>
+                    {% comment %} <input type="text" name="area" id="area" placeholder="area"><br> {% endcomment %}
+                    <label for="blood_group">Blood Group</label><br>
+                    {{ form.blood_group }}<br>
+                    <label for="date">Date</label><br>
+                    {{ form.date }}<br>
+                    <label for="no_of_units_recieved">No of units received</label><br>
+					{{ form.no_of_units_recieved }}<br>
+
+					<input type="submit" name="Submit" id ="Submit" value="Submit">
+                </form>
+            </div>
+{% endblock %}

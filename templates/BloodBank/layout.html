@@ -30,7 +30,7 @@
 				    <span></span>
 				    <ul id="menu">
 				      <a href="#"><li>Medical Store</li></a><br>
-				      <a href="#"><li>Blood Bank</li></a><br>
+				      <a href="#"><li>Hospital</li></a><br>
 				      <a href="#"><li>Patient Record</li></a><br>
 				      
 				    </ul>
@@ -44,7 +44,7 @@
       <div class="column column-a">
       		<div class="Services">
 	        <article>
-	            <h2>Hi XYZ Hospital!</h2>
+	            <h2>Hi XYZ bloodbank</h2>!</h2>
 	            <div class="custom-form" style="margin-left:0px">
 					<div id="cover">
 					  <form method="get" action="">
@@ -64,22 +64,12 @@
 	        	<div class="Cards">
 	            <ul>
 	                <li>
-	                    <img src="{% static 'Hospital/hospital.jpg' %}" alt="hospital"><br><br><br>
-	                    <a href="#">Hospital</a>
+	                    <img src="{% static 'Bloodbank/donor.jpg' %}" alt="donor"><br><br><br>
+	                    <a href="{% url 'Hospital:view_donor'%}">Donor</a>
 	                </li>
 	                <li>
-	                    <img src="{% static 'Hospital/doctor.jpg' %}" alt="doctor"><br><br><br>
-	                    <a href="{% url 'Hospital:view_doctor'%}">Doctors</a>
-	                </li>
-				</ul>
-				<ul>
-	                <li>
-	                    <img src="{% static 'Hospital/test.jpg' %}" alt="test"><br><br><br>
-	                    <a href="{% url 'Hospital:view_tests'%}">Tests</a>
-	                </li>
-	                <li>
-	                    <img src="{% static 'Hospital/patient.jpg' %}" alt="patient"><br><br><br>
-	                    <a href="{% url 'Hospital:view_patient'%}">Patients</a>
+	                    <img src="{% static 'Bloodbank/reciever.jpg' %}" alt="reciever"><br><br><br>
+	                    <a href="{% url 'Hospital:view_reciever'%}">Receiver</a>
 	                </li>
 	            </ul>
 	        	</div>
