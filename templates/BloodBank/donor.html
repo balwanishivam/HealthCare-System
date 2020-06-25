@@ -1,6 +1,6 @@
 {% extends 'Bloodbank/layout.html'%}
 {% load static %}
-{% block title %}Blood Inventory{% endblock %}
+{% block title %}Donors{% endblock %}
 {% block body %}
      <h3>Doctors</h3>
 
@@ -9,7 +9,7 @@
                     {% endif %}
                     <br><br><br>
 
-                    <a href="{% url 'Bloodbank:add_inventory'%}">
+                    <a href="{% url 'Bloodbank:add_donor'%}">
                         <button type="button" class="btn btn-dark btn-group-small" height="45px">
                             Add 
                         </button>
@@ -18,23 +18,38 @@
                     <table class="table" align="center">
                         <thead>
                         <tr>
+                            <th>Name</th>
                             <th>Blood group</th>
-                            <th>Units available</th>
+                            <th>Units donated</th>
+                            <th>Contact</th>
+                            <th>Email</th>
+                            <th>Area</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for blood in inventory %}
+                        {% for donor in donors %}
                             <tr>
                                 <td>
-                                    {{ blood.blood_group }}
+                                    {{ donor.name }}
                                 </td>
                                 <td>
-                                    {{blood.no_of_units}}
+                                    {{ donor.blood_group}}
                                 </td>
-                               
                                 <td>
-                                    <!--ek baar next line check karna ki blood_inventory.id likhna hai ya only inventory.id-->
-                                    <form action="{% url 'Bloodbank:delete_inventory' Blood_Inventory.id %}" method="post" style="display: inline;">
+                                    {{donor.no_of_units_donated}}
+                                </td>
+                                <td>
+                                    {{donor.contact}}
+                                </td> 
+                                <td>
+                                    {{donor.email}}
+                                </td>
+                                <td>
+                                    {{donor.area}}
+                                </td>
+                                
+                                <td>
+                                    <form action="{% url 'Bloodbank:delete_donor' donor.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">
@@ -43,7 +58,7 @@
                                      </form>
                                  </td>
                                  <td>
-                                     <form action="{% url 'Hospital:edit_inventory' inventory.id %}" method="post" style="display: inline;">
+                                     <form action="{% url 'Hospital:edit_donor' donor.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">

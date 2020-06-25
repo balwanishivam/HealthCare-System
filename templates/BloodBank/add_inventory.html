@@ -1,0 +1,18 @@
+{% extends 'BloodBank/layout.html'%}
+{% block title %} Inventory {% endblock %}
+{% block body %}
+    <div class="heading">
+      		<h2>Inventory Details</h2>
+      	</div>
+      	<div class="custom-form">
+                <form method="POST" action="">
+                {% csrf_token%}
+                    <label for="blood_group">Blood Group</label><br>
+                    {{ form.blood_group }}<br>
+                    <label for="no_of_units">No of units</label><br>
+					{{ form.no_of_units }}<br>
+
+					<input type="submit" name="Submit" id ="Submit" value="Submit">
+                </form>
+            </div>
+{% endblock %}
