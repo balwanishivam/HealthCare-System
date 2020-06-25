@@ -30,7 +30,7 @@ class BB_Details(models.Model):
 
 #Blood INventory
 class Blood_Inventory(models.Model):
-    blood_group=models.CharField(max_length=3,primary_key=True,choices=BLOOD_GROUP)
+    blood_group=models.CharField(max_length=3,choices=BLOOD_GROUP,unique=True)
     no_of_units=models.IntegerField(default=0)
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
 

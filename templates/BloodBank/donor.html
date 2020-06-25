@@ -1,15 +1,19 @@
-{% extends 'Bloodbank/layout.html'%}
+{% extends 'BloodBank/layout.html'%}
 {% load static %}
-{% block title %}Donors{% endblock %}
+{% block title %}Donor{% endblock %}
 {% block body %}
+<<<<<<< HEAD
+     <h3>Donors Details</h3>
+=======
      <h3>Donor</h3>
+>>>>>>> 99a428d4dfc694b77a17994fc356227c2ea44302
 
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
                     <br><br><br>
 
-                    <a href="{% url 'Bloodbank:add_donor'%}">
+                    <a href="{% url 'bloodbank:add_donor'%}">
                         <button type="button" class="btn btn-dark btn-group-small" height="45px">
                             Add 
                         </button>
@@ -49,7 +53,7 @@
                                 </td>
                                 
                                 <td>
-                                    <form action="{% url 'Bloodbank:delete_donor' donor.id %}" method="post" style="display: inline;">
+                                    <form action="{% url 'bloodbank:delete_donor' donor.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">
@@ -58,7 +62,7 @@
                                      </form>
                                  </td>
                                  <td>
-                                     <form action="{% url 'Hospital:edit_donor' donor.id %}" method="post" style="display: inline;">
+                                     <form action="{% url 'bloodbank:edit_donor' donor.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">

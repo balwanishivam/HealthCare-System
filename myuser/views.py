@@ -69,13 +69,13 @@ class LoginView(View):
                 if user_type=="HSP" :
                     #return HttpResponse("<html>Welcome to Ambulance</html>")
                     return redirect('Hospital:index')
-                    #return redirect('Attendance_manager:index_student')
+                    
                 elif user_type=="AMB" :
                     return HttpResponse("<html>Welcome to Ambulance</html>")
-                    #return redirect('Attendance_manager:index_student')
+                    
                 elif user_type=="BLB" :
-                    return HttpResponse("<html>Welcome to BLoodBank</html>")
-                    #return redirect('Attendance_manager:index_student')
+                    #return HttpResponse("<html>Welcome to BLoodBank</html>")
+                    return redirect('bloodbank:index')
                 elif user_type=="MST":
                     return HttpResponse("<html>Welcome to Medical Store</html>")
                     #return redirect('Attendance_manager:index_student')
