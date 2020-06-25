@@ -1,0 +1,26 @@
+{% extends 'Ambulance/layout.html'%}
+{% block title %} Ambulance details {% endblock %}
+{% block body %}
+    <div class="heading">
+      		<h2>Ambulance Details</h2>
+      	</div>
+      	<div class="custom-form">
+                <form method="POST" action="">
+                {% csrf_token%}
+                    <label for="vehicle_number">Vehicle Number</label><br>
+                    {{ form.vehicle_number }}<br>
+                    <label for="name">Name</label><br>
+                    {{ form.name }}<br>
+                    <label for="city">City</label><br>
+                    {{ form.city }}<br>
+                    <label for="pincode">Pincode</label><br>
+                    {{ form.pincode }}<br>
+                    <label for="contact">Contact</label><br>
+                    {{ form.contact }}<br>
+                    <label for="amb_type">Ambulance type</label><br>
+					{{ form.amb_type }}<br>
+
+					<input type="submit" name="Submit" id ="Submit" value="Submit">
+                </form>
+            </div>
+{% endblock %}
