@@ -1,4 +1,4 @@
-{% extends 'Bloodbank/layout.html'%}
+{% extends 'BloodBank/layout.html'%}
 {% load static %}
 {% block title %}Blood Inventory{% endblock %}
 {% block body %}
@@ -9,7 +9,7 @@
                     {% endif %}
                     <br><br><br>
 
-                    <a href="{% url 'Bloodbank:add_inventory'%}">
+                    <a href="{% url 'bloodbank:add_inventory'%}">
                         <button type="button" class="btn btn-dark btn-group-small" height="45px">
                             Add 
                         </button>
@@ -34,7 +34,7 @@
                                
                                 <td>
                                     <!--ek baar next line check karna ki blood_inventory.id likhna hai ya only inventory.id-->
-                                    <form action="{% url 'Bloodbank:delete_inventory' blood.id %}" method="post" style="display: inline;">
+                                    <form action="{% url 'bloodbank:delete_inventory' blood.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">
@@ -43,7 +43,7 @@
                                      </form>
                                  </td>
                                  <td>
-                                     <form action="{% url 'Bloodbank:edit_inventory' inventory.id %}" method="post" style="display: inline;">
+                                     <form action="{% url 'bloodbank:edit_inventory' blood.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">
