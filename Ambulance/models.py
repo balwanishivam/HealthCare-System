@@ -21,7 +21,7 @@ class Service_Provider(models.Model):
 #Ambulance Details
 class Ambulance_Details(models.Model):
     vehicle_no=models.CharField(max_length=15,primary_key=True)
-    org_name=models.ForeignKey(Myuser,on_delete=models.CASCADE)
+    user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
     name=models.CharField(max_length=256)
     city=models.ForeignKey(City,on_delete=models.DO_NOTHING)
     pincode=models.PositiveIntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])

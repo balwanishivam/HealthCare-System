@@ -1,15 +1,15 @@
-{% extends 'Bloodbank/layout.html'%}
+{% extends 'Ambulance/layout.html'%}
 {% load static %}
-{% block title %}Blood Inventory{% endblock %}
+{% block title %}Ambulance Details{% endblock %}
 {% block body %}
-     <h3>Blood Inventory</h3>
+     <h3>Ambulance Details</h3>
 
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
                     <br><br><br>
 
-                    <a href="{% url 'bloodbank:add_inventory'%}">
+                    <a href="{% url 'Ambulance:add_ambulance'%}">
                         <button type="button" class="btn btn-dark btn-group-small" height="45px">
                             Add 
                         </button>
@@ -18,23 +18,38 @@
                     <table class="table" align="center">
                         <thead>
                         <tr>
-                            <th>Blood group</th>
-                            <th>Units available</th>
+                            <th> Vehicle number</th>
+                            <th>Name</th>
+                            <th>City</th>
+                            <th>Pincode</th>
+                            <th>Contact</th>
+                            <th>Ambulance type</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for blood in inventory %}
+                        {% for ambulance in ambulance_details %}
                             <tr>
                                 <td>
-                                    {{ blood.blood_group }}
+                                    {{ ambulance.vehicle_number }}
                                 </td>
                                 <td>
-                                    {{blood.no_of_units}}
+                                    {{ambulance.name}}
+                                </td>
+                                <td>
+                                    {{ambulance.city}}
+                                </td>
+                                <td>
+                                    {{ambulance.pincode}}
+                                </td>
+                                <td>
+                                    {{ambulance.contact}}
+                                </td>
+                                <td>
+                                    {{ambulance.amb_type}}
                                 </td>
                                
                                 <td>
-                                    <!--ek baar next line check karna ki blood_inventory.id likhna hai ya only inventory.id-->
-                                    <form action="{% url 'bloodbank:delete_inventory' blood.id %}" method="post" style="display: inline;">
+                                    <form action="{% url 'Ambulance:delete_ambulance' ambulance.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">
@@ -43,7 +58,7 @@
                                      </form>
                                  </td>
                                  <td>
-                                     <form action="{% url 'bloodbank:edit_inventory' blood.id %}" method="post" style="display: inline;">
+                                     <form action="{% url 'Ambulance:edit_ambulance' ambulance.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">

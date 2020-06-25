@@ -16,7 +16,7 @@
 	<div id="container">
     <div id="header">
         <header>
-        <a href="{% url 'bloodbank:index' %}">
+        <a href="{% url 'Ambulance:index' %}">
             <img src="{% static 'myuser/css/logo.png' %}" alt="Logo" width="85">
         </a>
 	 	<nav>
@@ -29,9 +29,9 @@
 				    <span></span>
 				    <span></span>
 				    <ul id="menu">
-				      <a href="#"><li>Medical Store</li></a><br>
+				      <a href="#"><li>Bloodbank</li></a><br>
 				      <a href="#"><li>Hospital</li></a><br>
-				      <a href="#"><li>Patient Record</li></a><br>
+				      <a href="#"><li>Medical Store</li></a><br>
 				      
 				    </ul>
   				</div>
@@ -44,7 +44,7 @@
       <div class="column column-a">
       		<div class="Services">
 	        <article>
-	            <h2>Hi XYZ bloodbank</h2>!</h2>
+	            <h2>Hi XYZ Ambulance</h2>!</h2>
 	            <div class="custom-form" style="margin-left:0px">
 					<div id="cover">
 					  <form method="get" action="">
@@ -64,17 +64,10 @@
 	        	<div class="Cards">
 	            <ul>
 	                <li>
-	                    <img src="{% static 'Bloodbank/donor.jpg' %}" alt="donor"><br><br><br>
-	                    <a href="{% url 'bloodbank:view_donor'%}">Donor</a>
+	                    <img src="{% static 'Ambulance/ambulance.jpg' %}" alt="ambulance"><br><br><br>
+	                    <a href="{% url 'Ambulance:view_inventory'%}">Ambulance Details</a>
 	                </li>
-	                <li>
-	                    <img src="{% static 'Bloodbank/reciever.jpg' %}" alt="reciever"><br><br><br>
-	                    <a href="{% url 'bloodbank:view_receiver'%}">Receiver</a>
-                    </li>
-                    <li>
-	                    <img src="{% static 'Bloodbank/inventory.jpg' %}" alt="inventory"><br><br><br>
-	                    <a href="{% url 'bloodbank:view_inventory'%}">Inventory</a>
-	                </li>
+	               
 	            </ul>
 	        	</div>
 	    	</div>

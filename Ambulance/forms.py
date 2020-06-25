@@ -10,5 +10,5 @@ class ServiceProvider(forms.ModelForm):
 class AmbulanceDetails(forms.ModelForm):
     class Meta:
         model = Ambulance_Details
-        fields=['vehicle_no', 'org_name', 'name', 'city', 'pincode', 'contact', 'amb_type']
-        exclude=('org_name',)
+        fields=['vehicle_no', 'user', 'name', 'city', 'pincode', 'contact', 'amb_type']
+        exclude=('user',)
