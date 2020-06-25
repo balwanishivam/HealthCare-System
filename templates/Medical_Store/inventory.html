@@ -1,15 +1,15 @@
-{% extends 'Bloodbank/layout.html'%}
+{% extends 'Medical_Store/layout.html'%}
 {% load static %}
-{% block title %}Blood Inventory{% endblock %}
+{% block title %}Medicine Inventory{% endblock %}
 {% block body %}
-     <h3>Blood Inventory</h3>
+     <h3>Medicine Inventory</h3>
 
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
                     <br><br><br>
 
-                    <a href="{% url 'Bloodbank:add_inventory'%}">
+                    <a href="{% url 'Medical_Store:add_inventory'%}">
                         <button type="button" class="btn btn-dark btn-group-small" height="45px">
                             Add 
                         </button>
@@ -18,23 +18,35 @@
                     <table class="table" align="center">
                         <thead>
                         <tr>
-                            <th>Blood group</th>
-                            <th>Units available</th>
+                            <th> Name</th>
+                            <th>Company</th>
+                            <th>MFD</th>
+                            <th>Expiry</th>
+                            <th>MRP</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for blood in inventory %}
+                        {% for medicine in inventory %}
                             <tr>
                                 <td>
-                                    {{ blood.blood_group }}
+                                    {{ medicine.name }}
                                 </td>
                                 <td>
-                                    {{blood.no_of_units}}
+                                    {{medicine.company}}
+                                </td>
+                                <td>
+                                    {{medicine.mfd}}
+                                </td>
+                                <td>
+                                    {{medicine.expiry}}
+                                </td>
+                                <td>
+                                    {{medicine.mrp}}
                                 </td>
                                
                                 <td>
-                                    <!--ek baar next line check karna ki blood_inventory.id likhna hai ya only inventory.id-->
-                                    <form action="{% url 'Bloodbank:delete_inventory' Blood_Inventory.id %}" method="post" style="display: inline;">
+                                    <!--ek baar next line check karna ki medicine_inventory.id likhna hai ya only inventory.id-->
+                                    <form action="{% url 'Medical_Store:delete_inventory' Medicine_Inventory.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">
@@ -43,7 +55,7 @@
                                      </form>
                                  </td>
                                  <td>
-                                     <form action="{% url 'Bloodbank:edit_inventory' inventory.id %}" method="post" style="display: inline;">
+                                     <form action="{% url 'Medical_Store:edit_inventory' inventory.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">
