@@ -1,0 +1,24 @@
+{% extends 'Medical_Store/layout.html'%}
+{% block title %} Inventory {% endblock %}
+{% block body %}
+    <div class="heading">
+      		<h2>Inventory Details</h2>
+      	</div>
+      	<div class="custom-form">
+                <form method="POST" action="">
+                {% csrf_token%}
+                    <label for="name">Name</label><br>
+                    {{ form.name }}<br>
+                    <label for="company">Company</label><br>
+                    {{ form.company }}<br>
+                    <label for="mfd">MFD</label><br>
+                    {{ form.mfd }}<br>
+                    <label for="expiry">Expiry</label><br>
+                    {{ form.expiry }}<br>
+                    <label for="mrp">MRP</label><br>
+					{{ form.mrp }}<br>
+
+					<input type="submit" name="Submit" id ="Submit" value="Submit">
+                </form>
+            </div>
+{% endblock %}
