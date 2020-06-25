@@ -6,15 +6,24 @@ app_name="bloodbank"
 
 urlpatterns=[
     path('register/',views.UserCreate.as_view(),name="register"),
-    # path('/report/',views.reports,name="report"),
-    # path('search/',views.search,name="search"),
-    # path('serach/city/<slug:city>/',views.city_search,name="city_search"),
-    # path('search/bloodgroup/<slug:bloodgroup>/',views.bloodgroup_search,name='bloodgroup_search'),
-    # path('admin/',views.admin,name='admin'),
-    # path('admin/add_blood',views.add_blood,name='add_blood'),
-    # path('admin/add_reciever',views.add_reciever,name='add_reciever'),
-    # path('admin/add_donor',views.add_donor,name='add_donor'),
-    # path('admin/edit_blood',views.edit_blood,name='edit_blood'),
-    # path('admin/edit_reciever',views.edit_reciever,name='edit_reciever'),
-    # path('admin/edit_donor',views.edit_donor,name='edit_donor'),
+    path('',views.Index.as_view(),name="index"),
+
+    #Donor Url
+    path('view_donor',views.ViewDonor.as_view(),name="view_donor"),
+    path('add_donor',views.AddDonor.as_view(),name='add_donor'),
+    path('<int:pk>/delete_donor',views.DeleteDonor.as_view(),name='delete_donor'),
+    path('<int:pk>/edit_donor',views.EditDonor.as_view(),name='edit_donor'),
+
+    #Reciever Url
+    path('view_reviever',views.ViewReciever.as_view(),name="view_reviever"),
+    path('add_reviever',views.AddReciever.as_view(),name='add_reviever'),
+    path('<int:pk>/delete_reviever',views.DeleteReciever.as_view(),name='delete_reviever'),
+    path('<int:pk>/edit_reviever',views.EditReciever.as_view(),name='edit_reviever'),
+    
+    #Inventory Url
+    path('view_inventory',views.ViewReciever.as_view(),name="view_inventory"),
+    path('add_reviever',views.AddReciever.as_view(),name='add_inventory'),
+    path('<int:pk>/delete_inventory',views.DeleteReciever.as_view(),name='delete_inventory'),
+    path('<int:pk>/edit_inventory',views.EditReciever.as_view(),name='edit_inventory'),
+
 ]
