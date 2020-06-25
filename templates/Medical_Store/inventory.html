@@ -46,7 +46,7 @@
                                
                                 <td>
                                     <!--ek baar next line check karna ki medicine_inventory.id likhna hai ya only inventory.id-->
-                                    <form action="{% url 'Medical_Store:delete_inventory' Medicine_Inventory.id %}" method="post" style="display: inline;">
+                                    <form action="{% url 'Medical_Store:delete_inventory' medicine.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">
@@ -55,7 +55,7 @@
                                      </form>
                                  </td>
                                  <td>
-                                     <form action="{% url 'Medical_Store:edit_inventory' inventory.id %}" method="post" style="display: inline;">
+                                     <form action="{% url 'Medical_Store:edit_inventory' medicine.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">

@@ -1,19 +1,15 @@
-{% extends 'Bloodbank/layout.html'%}
+{% extends 'Ambulance/layout.html'%}
 {% load static %}
-{% block title %}Donor{% endblock %}
+{% block title %}Ambulance Details{% endblock %}
 {% block body %}
-<<<<<<< HEAD
-     <h3>Donors Details</h3>
-=======
-     <h3>Donor</h3>
->>>>>>> 99a428d4dfc694b77a17994fc356227c2ea44302
+     <h3>Ambulance Details</h3>
 
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
                     <br><br><br>
 
-                    <a href="{% url 'bloodbank:add_donor'%}">
+                    <a href="{% url 'Ambulance:add_ambulance'%}">
                         <button type="button" class="btn btn-dark btn-group-small" height="45px">
                             Add 
                         </button>
@@ -22,38 +18,38 @@
                     <table class="table" align="center">
                         <thead>
                         <tr>
+                            <th> Vehicle number</th>
                             <th>Name</th>
-                            <th>Blood group</th>
-                            <th>Units donated</th>
+                            <th>City</th>
+                            <th>Pincode</th>
                             <th>Contact</th>
-                            <th>Email</th>
-                            <th>Area</th>
+                            <th>Ambulance type</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for donor in donors %}
+                        {% for ambulance in ambulance_details %}
                             <tr>
                                 <td>
-                                    {{ donor.name }}
+                                    {{ ambulance.vehicle_number }}
                                 </td>
                                 <td>
-                                    {{ donor.blood_group}}
+                                    {{ambulance.name}}
                                 </td>
                                 <td>
-                                    {{donor.no_of_units_donated}}
+                                    {{ambulance.city}}
                                 </td>
                                 <td>
-                                    {{donor.contact}}
-                                </td> 
-                                <td>
-                                    {{donor.email}}
+                                    {{ambulance.pincode}}
                                 </td>
                                 <td>
-                                    {{donor.area}}
+                                    {{ambulance.contact}}
                                 </td>
-                                
                                 <td>
-                                    <form action="{% url 'bloodbank:delete_donor' donor.id %}" method="post" style="display: inline;">
+                                    {{ambulance.amb_type}}
+                                </td>
+                               
+                                <td>
+                                    <form action="{% url 'Ambulance:delete_ambulance' ambulance.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">
@@ -62,7 +58,7 @@
                                      </form>
                                  </td>
                                  <td>
-                                     <form action="{% url 'bloodbank:edit_donor' donor.id %}" method="post" style="display: inline;">
+                                     <form action="{% url 'Ambulance:edit_ambulance' ambulance.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">
