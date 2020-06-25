@@ -1,6 +1,6 @@
 {% extends 'Bloodbank/layout.html'%}
 {% load static %}
-{% block title %}Blood Inventory{% endblock %}
+{% block title %}Receivers{% endblock %}
 {% block body %}
      <h3>Doctors</h3>
 
@@ -9,7 +9,7 @@
                     {% endif %}
                     <br><br><br>
 
-                    <a href="{% url 'Bloodbank:add_inventory'%}">
+                    <a href="{% url 'Bloodbank:add_receiver'%}">
                         <button type="button" class="btn btn-dark btn-group-small" height="45px">
                             Add 
                         </button>
@@ -18,23 +18,38 @@
                     <table class="table" align="center">
                         <thead>
                         <tr>
+                            <th>Name</th>
                             <th>Blood group</th>
-                            <th>Units available</th>
+                            <th>Units received</th>
+                            <th>Date</th>
+                            <th>Contact</th>
+                            <th>Email</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for blood in inventory %}
+                        {% for receiver in receivers %}
                             <tr>
                                 <td>
-                                    {{ blood.blood_group }}
+                                    {{ receiver.name }}
                                 </td>
                                 <td>
-                                    {{blood.no_of_units}}
+                                    {{ receiver.blood_group}}
+                                </td>
+                                <td>
+                                    {{receiver.no_of_units_recieved}}
+                                </td>
+                                <td>
+                                    {{receiver.date}}
+                                </td>
+                                <td>
+                                    {{receiver.contact}}
+                                </td> 
+                                <td>
+                                    {{receiver.email}}
                                 </td>
                                
                                 <td>
-                                    <!--ek baar next line check karna ki blood_inventory.id likhna hai ya only inventory.id-->
-                                    <form action="{% url 'Bloodbank:delete_inventory' Blood_Inventory.id %}" method="post" style="display: inline;">
+                                    <form action="{% url 'Bloodbank:delete_receiver' receiver.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">
@@ -43,7 +58,7 @@
                                      </form>
                                  </td>
                                  <td>
-                                     <form action="{% url 'Hospital:edit_inventory' inventory.id %}" method="post" style="display: inline;">
+                                     <form action="{% url 'Hospital:edit_receiver' receiver.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">
