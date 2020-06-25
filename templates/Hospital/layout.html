@@ -68,8 +68,20 @@
 	                    <a href="#">Hospital</a>
 	                </li>
 	                <li>
-	                    <img src="{% static 'Hospital/doctor.jpg' %}" alt="doctor"><br><br><br>
+	                    <a href="{% url 'Hospital:view_doctor'%}"><img src="{% static 'Hospital/doctor.jpg' %}" alt="doctor"></a><br><br><br>
 	                    <a href="{% url 'Hospital:view_doctor'%}">Doctors</a>
+					</li>
+				</ul>
+				</div>
+				<div class="Cards">
+				<ul>
+					<li>
+	                    <a href="{% url 'Hospital:view_test'%}"><img src="{% static 'Hospital/test.jpg' %}" alt="test"></a><br><br><br>
+	                    <a href="{% url 'Hospital:view_test'%}">Tests</a>
+					</li>
+					<li>
+	                    <a href="{% url 'Hospital:view_patient'%}"><img src="{% static 'Hospital/patient.jpg' %}" alt="doctor"></a><br><br><br>
+	                    <a href="{% url 'Hospital:view_patient'%}">Patients</a>
 	                </li>
 	            </ul>
 	        	</div>
