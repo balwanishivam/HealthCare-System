@@ -24,13 +24,15 @@
                             <th>Pincode</th>
                             <th>Contact</th>
                             <th>Ambulance type</th>
+                            <th>Delete</th>
+                            <th>Edit</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for ambulance in ambulance_details %}
                             <tr>
                                 <td>
-                                    {{ ambulance.vehicle_number }}
+                                    {{ ambulance.vehicle_no }}
                                 </td>
                                 <td>
                                     {{ambulance.name}}
