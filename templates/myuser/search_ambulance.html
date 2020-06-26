@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+{% load static%}
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -94,7 +95,8 @@ form.example::after {
 
     </header>
 <p style="text-align: center;color:#ed6a5a;">Enter Pincode to search</p>
-<form class="example" action="{% url 'myuser:view_ambulance' pincode %}" method="POST" style="margin:auto;max-width:500px">
+<form class="example" action="#" method="POST" style="margin:auto;max-width:500px">
+{% csrf_token %}
   <input type="text" placeholder="Search.." name="pincode">
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
