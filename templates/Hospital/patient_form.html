@@ -10,22 +10,22 @@
                 	<label for="name">Name</label><br>
                     {% comment %} <input type="text" name="name" id="name" placeholder="name"><br> {% endcomment %}
 					{{ form.name }}<br>
-                    <label for="dob">DOB</label><br>
+                    <label for="dob">DOB(YYYY-MM_DD)</label><br>
 					{{ form.dob }}<br>
                     {% comment %} <input type="text" name="dob" id="dob" placeholder="dob"><br> {% endcomment %}
                     <label for="gender">Gender</label><br>
 					{{form.gender}}<br>
                     {% comment %} <input type="text" name="gender" id="gender" placeholder="gender"><br> {% endcomment %}
                     <label for="blood_group">Blood group</label><br>
-					{{ form.cost }}<br>
+					{{ form.blood_group }}<br>
                     {% comment %} <input type="text" name="cost" id="cost" placeholder="cost"><br> {% endcomment %}
                     <label for="med_history">Medical History</label><br>
                     {{form.med_history}}<br>
                     <label for="contact">Contact</label><br>
                     {{form.contact}}<br>
-                    <label for="adm_date">Admission date</label><br>
-                    {{form.gender}}<br>
-                    <label for="discharge_date">Discharge date</label><br>
+                    <label for="adm_date">Admission date(YYYY-MM_DD)</label><br>
+                    {{form.adm_date}}<br>
+                    <label for="discharge_date">Discharge date(YYYY-MM_DD)</label><br>
 					{{form.discharge_date}}<br>
 
 					<input type="submit" name="Submit" id ="Submit" value="Submit">
