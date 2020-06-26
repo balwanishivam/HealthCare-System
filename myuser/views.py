@@ -31,7 +31,7 @@ class SearchAmbulance(View):
         return render(request,self.template_name)
 
 class SearchHospital(View):
-    template_name='myuser/search_hospital.html'
+    template_name='myuser/search_hopital.html'
 
     def get(self,request):
         return render(request,self.template_name)

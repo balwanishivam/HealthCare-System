@@ -5,7 +5,7 @@ from django.conf import settings
 app_name="myuser"
 
 urlpatterns=[
-    # path('',views.index,name='index'),
+    path('',views.Index.as_view(),name='index'),
     path('login/',views.LoginView.as_view(),name='login'),
     path('search_ambulance', views.SearchAmbulance.as_view(),name='search_ambulance'),
     path('<int:pincode>/view_ambulance', views.ViewAmbulance.as_view(),name='view_ambulance'),

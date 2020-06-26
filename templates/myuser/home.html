@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{% static 'myuser/css/main.css'%}" />
 		<noscript>
-		<link rel="stylesheet" href="{% static 'assets/css/noscript.css'%}" />
+		<link rel="stylesheet" href="{% static 'myuser/css/noscript.css'%}" />
 		</noscript>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
@@ -52,7 +52,7 @@
 									<span class="image">
 										<img src="{% static 'myuser/images/pic01.jpg'%}" alt="" />
 									</span>
-									<a href="{% url 'myuser:search_hopital' %}">
+									<a href="{% url 'myuser:search_hospital' %}">
 										<h2>Hospital</h2>
 										<div class="content">
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
@@ -60,30 +60,29 @@
 									</a>
 								</article>
 								<article class="style2">
-								<a href="{% url 'myuser:search_ambulance' %}>
 									<span class="image">
 										<img src="{% static 'myuser/images/pic03.jpg'%}" alt="" />
 									</span>
 									</a>
-									<a href="{% url 'myuser:search_ambulance' %}>
+									<a href="{% url 'myuser:search_ambulance'%}">
 										<h2>Ambulance</h2>
 										<div class="content">
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 										</div>
 									</a>
 								</article>
-								<article class="style3">
+								<article class="style">
 									<span class="image">
 										<img src="{% static 'myuser/images/pic01.jpg'%}" alt="" />
 									</span>
-									<a href="{% url 'myuser:search_medicine' %}>
+									<a href="{% url 'myuser:search_medicine' %}"
 										<h2>Medicine</h2>
 										<div class="content">
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 										</div>
 									</a>
 								</article>
-								<article class="style4">
+								{% comment %} <article class="style1">
 									<span class="image">
 										<img src="{% static 'myuser/images/pic04.jpg'%}" alt="" />
 									</span>
@@ -94,7 +93,7 @@
 										</div>
 									</a>
 								</article>
-								
+								 {% endcomment %}
 							</section>
 						</div>
 					</div>
