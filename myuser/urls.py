@@ -8,6 +8,7 @@ urlpatterns=[
     # path('',views.index,name='index'),
     path('',views.LoginView.as_view(),name='login'),
     path('register/',views.UserFormView.as_view(),name='register'),
-    path('<pk>/delete',views.Delete.as_view(),name='delete')
+    path('<pk>/delete',views.Delete.as_view(),name='delete'),
+    path('logout/',views.LogoutView.as_view(),name='logout')
     # path('forgotpassword/',views.forgotpassword,name='forgotpasssword')
 ]

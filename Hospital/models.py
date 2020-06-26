@@ -35,7 +35,7 @@ class Doctor(models.Model):
 
     def get_absolute_url(self):
         return reverse('Hospital:view_doctor')
-
+    
     
 class Patient(models.Model):
     name=models.CharField(max_length=200)

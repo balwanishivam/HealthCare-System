@@ -59,8 +59,9 @@ class LoginView(View):
         form=self.form_class(request.POST)
         email=request.POST['email']
         password=request.POST['password']
+        print(email)
         user=authenticate(email=email,password=password)
-        user_details=Myuser.objects.get(pk=request.user.id)
+        user_details=Myuser.objects.get(email=email)
         user_type=user_details.user_type
         
         if user is not None:
@@ -71,8 +72,9 @@ class LoginView(View):
                     return redirect('Hospital:index')
                     
                 elif user_type=="AMB" :
-                    return HttpResponse("<html>Welcome to Ambulance</html>")
-                    
+                    #return HttpResponse("<html>Welcome to Ambulance</html>")
+                    return redirect('Ambulance:index')
+
                 elif user_type=="BLB" :
                     #return HttpResponse("<html>Welcome to BLoodBank</html>")
                     return redirect('bloodbank:index')
@@ -96,7 +98,7 @@ class LogoutView(View):
     def get(self,request):
         form=self.form_class(None)
         logout(request)
-        return redirect(reverse('myuser:login_user'))
+        return redirect(reverse('myuser:login'))
 
 class Delete(DeleteView):
     model=Myuser
