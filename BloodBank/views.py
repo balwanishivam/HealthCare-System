@@ -9,6 +9,17 @@ from django.http import HttpResponse
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+BLOOD_GROUP=[
+    ('A+','A+'),
+    ('B+','B+'),
+    ('O+','O+'),
+    ('AB+','AB+'),
+    ('A-','A-'),
+    ('B-','B-'),
+    ('O-','O-'),
+    ('AB-','AB-'),
+]
+
 #Index Page
 class Index(View):
     template_name='BloodBank/layout.html'
@@ -22,6 +33,15 @@ class UserCreate(LoginRequiredMixin,View):
     form_class=BBDetails
     template_name='BloodBank/register.html'
 
+    def initialise(self):
+        for i in range(len(BLOOD_GROUP)) :
+            print(i)
+            blood=Blood_Inventory()
+            blood.blood_group=BLOOD_GROUP[i]
+            blood.no_of_units=0
+            blood.user=self.request.user
+            blood.save()
+            
     def get(self,request):
         form=self.form_class(None)
         return render(request,self.template_name,{'form':form})
@@ -32,10 +52,12 @@ class UserCreate(LoginRequiredMixin,View):
             provider=form.save(commit=False)
             form.instance.user = self.request.user
             provider.save()
+            initialise()
             return redirect('bloodbank:index')
         
         return render(request,self.template_name,{'form':form})
-
+    
+    
 #Donor Details
 #Add_Details
 class AddDonor(LoginRequiredMixin,View):
@@ -156,6 +178,8 @@ class AddInventory(LoginRequiredMixin,View):
             provider.save()
             return redirect('bloodbank:view_inventory')
         return render(request,self.template_name,{'form':form})
+
+    
 
 #list Reciever
 class ViewInventory(ListView):
