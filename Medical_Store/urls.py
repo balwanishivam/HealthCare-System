@@ -5,8 +5,16 @@ app_name="Medical_Store"
 
 urlpatterns=[
     path('register/',views.UserCreate.as_view(),name="register"),
+    path('',views.Index.as_view(),name="index"),
     path('add_company/',views.AddCompany.as_view(),name="add_company"),
-    path('add_medicine/',views.AddMedicine.as_view(),name="add_medicine"),
+
+    #Inventory url
+    path('add_medicine_inventory/',views.AddMedicine.as_view(),name="add_medicine_inventory"),
+    path('view_medicine_inventory/',views.ViewMedicine.as_view(),name="view_medicine_inventory"),
+    path('<int:pk>/delete_medicine_inventory',views.DeleteMedicine.as_view(),name='delete_medicine_inventory'),
+    path('<int:pk>/edit_medicine_inventory',views.EditMedicine.as_view(),name='edit_medicine_inventory'),
+
+    
     # path('/report/',views.reports,name="report"),
     # path('search/',views.search,name="search"),
     # path('serach/city/<slug:city>/',views.city_search,name="city_search"),
