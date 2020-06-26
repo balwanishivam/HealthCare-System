@@ -9,7 +9,7 @@
                     {% endif %}
                     <br><br><br>
 
-                    <a href="{% url 'Medical_Store:add_inventory'%}">
+                    <a href="{% url 'Medical_Store:add_medicine_inventory'%}">
                         <button type="button" class="btn btn-dark btn-group-small" height="45px">
                             Add 
                         </button>
@@ -26,16 +26,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for medicine in inventory %}
+                        {% for medicine in medicine_inventory %}
                             <tr>
                                 <td>
                                     {{ medicine.name }}
                                 </td>
                                 <td>
-                                    {{medicine.company}}
+                                    {{medicine.company_name}}
                                 </td>
                                 <td>
-                                    {{medicine.mfd}}
+                                    {{medicine.mdf}}
                                 </td>
                                 <td>
                                     {{medicine.expiry}}
@@ -45,8 +45,8 @@
                                 </td>
                                
                                 <td>
-                                    <!--ek baar next line check karna ki medicine_inventory.id likhna hai ya only inventory.id-->
-                                    <form action="{% url 'Medical_Store:delete_inventory' medicine.id %}" method="post" style="display: inline;">
+                                    <!--ek baar next line check karna ki medicine_inventory.id likhna hai ya only medicine_inventory.id-->
+                                    <form action="{% url 'Medical_Store:delete_medicine_inventory' medicine.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">
@@ -55,7 +55,7 @@
                                      </form>
                                  </td>
                                  <td>
-                                     <form action="{% url 'Medical_Store:edit_inventory' medicine.id %}" method="post" style="display: inline;">
+                                     <form action="{% url 'Medical_Store:edit_medicine_inventory' medicine.id %}" method="post" style="display: inline;">
                                      {% csrf_token %}
                                      <input type="hidden" name="album_id" value="{{ album.id }}" />
                                      <button type="submit" class="btn btn-default btn-sm">

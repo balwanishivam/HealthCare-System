@@ -15,6 +15,7 @@ class CompanyDetails(forms.ModelForm):
 
 class MedicineInventory(forms.ModelForm):
     class Meta:
-        fields=['name','company','mfd','expiry','mrp','user']
+        model=Medicine_Inventory
+        fields=['name','company_name','mdf','expiry','mrp','user']
         exclude=('user',)
 

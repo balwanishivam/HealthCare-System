@@ -79,7 +79,9 @@ class LoginView(View):
                     #return HttpResponse("<html>Welcome to BLoodBank</html>")
                     return redirect('bloodbank:index')
                 elif user_type=="MST":
-                    return HttpResponse("<html>Welcome to Medical Store</html>")
+                    return redirect('Medical_Store:index')
+
+                    #return HttpResponse("<html>Welcome to Medical Store</html>")
                     #return redirect('Attendance_manager:index_student')
                 else :
                     return HttpResponse("</html>Not Selected valid user type</html>")
