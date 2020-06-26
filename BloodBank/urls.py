@@ -15,15 +15,15 @@ urlpatterns=[
     path('<int:pk>/edit_donor',views.EditDonor.as_view(),name='edit_donor'),
 
     #Reciever Url
-    path('view_reviever',views.ViewReciever.as_view(),name="view_reviever"),
-    path('add_reviever',views.AddReciever.as_view(),name='add_reviever'),
-    path('<int:pk>/delete_reviever',views.DeleteReciever.as_view(),name='delete_reviever'),
-    path('<int:pk>/edit_reviever',views.EditReciever.as_view(),name='edit_reviever'),
+    path('view_receiver',views.ViewReceiver.as_view(),name="view_receiver"),
+    path('add_receiver',views.AddReceiver.as_view(),name='add_receiver'),
+    path('<int:pk>/delete_receiver',views.DeleteReceiver.as_view(),name='delete_receiver'),
+    path('<int:pk>/edit_receiver',views.EditReceiver.as_view(),name='edit_receiver'),
     
     #Inventory Url
-    path('view_inventory',views.ViewReciever.as_view(),name="view_inventory"),
-    path('add_reviever',views.AddReciever.as_view(),name='add_inventory'),
-    path('<int:pk>/delete_inventory',views.DeleteReciever.as_view(),name='delete_inventory'),
-    path('<int:pk>/edit_inventory',views.EditReciever.as_view(),name='edit_inventory'),
+    path('view_inventory',views.ViewInventory.as_view(),name="view_inventory"),
+    path('add_reviever',views.AddInventory.as_view(),name='add_inventory'),
+    path('<int:pk>/delete_inventory',views.DeleteInventory.as_view(),name='delete_inventory'),
+    path('<int:pk>/edit_inventory',views.EditInventory.as_view(),name='edit_inventory'),
 
 ]
