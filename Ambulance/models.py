@@ -19,8 +19,8 @@ class Service_Provider(models.Model):
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
 
 #Ambulance Details
-class Ambulance_Details(models.Model):
-    vehicle_no=models.CharField(max_length=15,primary_key=True)
+class Ambulance(models.Model):
+    vehicle_no=models.CharField(max_length=15,unique=True)
     user=models.ForeignKey(Myuser,on_delete=models.CASCADE)
     name=models.CharField(max_length=256)
     city=models.ForeignKey(City,on_delete=models.DO_NOTHING)

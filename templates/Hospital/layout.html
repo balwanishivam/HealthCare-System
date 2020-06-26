@@ -22,7 +22,7 @@
 	 	<nav>
             <ul>
             	<li><a href="#">Home</a></li>
-            	<li><a href="#">LogOut</a></li>
+            	<li><a href="{% url 'myuser:logout' %}">LogOut</a></li>
                 <div id="menuToggle">
     				<input type="checkbox" />
 				    <span style="margin-top:-15px"></span>
@@ -87,7 +87,7 @@
 				<ul>
 	                <li>
 	                    <img src="{% static 'Hospital/test.jpg' %}" alt="test"><br><br><br>
-	                    <a href="{% url 'Hospital:view_tests'%}">Tests</a>
+	                    <a href="{% url 'Hospital:view_test'%}">Tests</a>
 	                </li>
 	                <li>
 	                    <img src="{% static 'Hospital/patient.jpg' %}" alt="patient"><br><br><br>

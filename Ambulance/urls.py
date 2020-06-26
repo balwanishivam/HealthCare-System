@@ -6,9 +6,13 @@ from . import views
 app_name="Ambulance"
 
 urlpatterns=[
-    #path('home/',views.home,name="home"),
+    path('',views.Index.as_view(),name="index"),
     path('register/',views.UserCreate.as_view(),name="register"),
+    # Ambulance Servicce
     path('add_ambulance/',views.AddAmbulance.as_view(),name="add_ambulance"),
+    path('<int:pk>/edit_ambulance/',views.EditAmbulance.as_view(),name="edit_ambulance"),
+    path('<int:pk>/delete_ambulance/',views.DeleteAmbulance.as_view(),name="delete_ambulance"),
+    path('view_ambulance/',views.ViewAmbulance.as_view(),name="view_ambulance"),
     # path('/report/',views.reports,name="report"),
     # path('search/',views.search,name="search"),
     # path('search/pincode/<slug:pincode>/',views.pincode_search,name="pincode_search"),
