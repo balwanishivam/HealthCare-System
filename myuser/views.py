@@ -7,6 +7,86 @@ from django.contrib.auth import authenticate,login,logout
 from .forms import *
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from Medical_Store.models import * 
+from Ambulance.models import *
+from BloodBank.models import *
+from Hospital.models import *
+
+class Index(View):
+    template_name='myuser/home.html'
+
+    def get(self,request):
+        return render(request,self.template_name)
+
+class SearchMedicine(View):
+    template_name='myuser/search_medicine.html'
+
+    def get(self,request):
+        return render(request,self.template_name)
+
+class SearchAmbulance(View):
+    template_name='myuser/search_ambulance.html'
+
+    def get(self,request):
+        return render(request,self.template_name)
+
+class SearchHospital(View):
+    template_name='myuser/search_hospital.html'
+
+    def get(self,request):
+        return render(request,self.template_name)
+
+class SearchBloodBank(View):
+    template_name='myuser/search_bloodbank.html'
+
+    def get(self,request):
+        return render(request,self.template_name)
+
+class ViewMedicine(ListView):
+    template_name='myuser/medicine.html'
+    context_object_name='medical'
+    model=Store_Details
+    def get_queryset(self):
+        qs = super().get_queryset()
+        pincode = self.request.pincode
+        if pincode is None:
+            return qs
+        return qs.filter(pincode=pincode)
+
+class ViewAmbulance(ListView):
+    template_name='myuser/ambulance.html'
+    context_object_name='ambulance_details'
+    model=Service_Provider
+    def get_queryset(self):
+        qs = super().get_queryset()
+        pincode = self.request.pincode
+        if pincode is None:
+            return qs
+        return qs.filter(pincode=pincode)
+
+
+class ViewHospital(ListView):
+    template_name='myuser/hospital.html'
+    context_object_name='hospital_details'
+    model=Hosp_detail
+    def get_queryset(self):
+        qs = super().get_queryset()
+        pincode = self.request.pincode
+        if pincode is None:
+            return qs
+        return qs.filter(pincode=pincode)
+
+
+class ViewBloodbank(ListView):
+    template_name='myuser/bloodbank.html'
+    context_object_name='bb_details'
+    model=BB_Details
+    def get_queryset(self):
+        qs = super().get_queryset()
+        pincode = self.request.pincode
+        if pincode is None:
+            return qs
+        return qs.filter(pincode=pincode)
 
 class UserFormView(View):
     form_class=UserForm

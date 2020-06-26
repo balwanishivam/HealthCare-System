@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+header   {
+  padding: 20px 30px;
+}
+
+#logo         {
+  display: inline-block;
+  color: #FFF;
+  text-decoration: none;
+  width: 49%;
+}
+nav     {
+  width: 50%;
+  display: inline-block;
+  text-align: right;
+  font-size:26px;
+  font-family:"Courier New", Courier, monospace;
+}
+nav ul   {
+  list-style: none;
+  margin: 0;
+}
+nav ul li {
+  display: inline-block;
+}
+nav ul li a    {
+  color:#ed6a5a;
+  text-decoration:none;
+  display: inline-block;
+  margin-bottom: 50px;
+  padding: 10px 15px;
+  border-radius: 3px;
+  transition: 0.3s ease all;
+}
+nav ul li a:hover   {
+  background:#7abecc;
+  color:#fff;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<body>
+    <header>
+
+        <a id="logo" href="#">
+<img src="{% static 'myuser/images/logo.png'%}" alt="Logo">        </a>
+        <nav>
+            <ul>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+
+    </header>
+<p style="text-align: center;color:#ed6a5a;">Enter Pincode to search</p>
+<form class="example" action="{% url 'myuser:view_ambulance' pincode %}" method="POST" style="margin:auto;max-width:500px">
+  <input type="text" placeholder="Search.." name="pincode">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+</body>
+</html> 
