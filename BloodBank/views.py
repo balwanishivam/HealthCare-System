@@ -32,16 +32,7 @@ class Index(View):
 class UserCreate(LoginRequiredMixin,View):
     form_class=BBDetails
     template_name='BloodBank/register.html'
-
-    def initialise(self):
-        for i in range(len(BLOOD_GROUP)) :
-            print(i)
-            blood=Blood_Inventory()
-            blood.blood_group=BLOOD_GROUP[i]
-            blood.no_of_units=0
-            blood.user=self.request.user
-            blood.save()
-            
+        
     def get(self,request):
         form=self.form_class(None)
         return render(request,self.template_name,{'form':form})
@@ -52,7 +43,6 @@ class UserCreate(LoginRequiredMixin,View):
             provider=form.save(commit=False)
             form.instance.user = self.request.user
             provider.save()
-            initialise()
             return redirect('bloodbank:index')
         
         return render(request,self.template_name,{'form':form})
